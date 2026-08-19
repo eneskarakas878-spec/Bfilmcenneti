@@ -3,15 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BFilmCenneti | Film Dünyası</title>
+<title>BFilmCenneti - Film Dünyası</title>
 
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -20,1529 +18,1295 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#07080c;
+    background:#09090f;
     color:#fff;
+    min-height:100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
-    height:76px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:75px;
     padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:25px;
-
-    background:rgba(10,11,16,.95);
-    border-bottom:1px solid #292c35;
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-
+    background:rgba(12,12,22,.94);
+    border-bottom:1px solid #292936;
     backdrop-filter:blur(15px);
 }
 
 .logo{
-    font-size:27px;
+    font-size:25px;
     font-weight:900;
-    white-space:nowrap;
+    color:#fff;
+    text-decoration:none;
 }
 
 .logo span{
-    color:#ffd400;
+    color:#ffd21c;
+}
+
+.logo-icon{
+    color:#ffd21c;
+    margin-right:5px;
 }
 
 nav{
     display:flex;
-    gap:25px;
+    gap:28px;
+    align-items:center;
 }
 
 nav a{
     color:#ddd;
     text-decoration:none;
-    font-weight:bold;
-}
-
-nav a:hover{
-    color:#ffd400;
-}
-
-.header-search{
-    width:230px;
-    padding:10px 15px;
-    border-radius:25px;
-    border:1px solid #333640;
-    background:#171920;
-    color:white;
-    outline:none;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:550px;
-    padding:90px 7%;
-    display:flex;
-    align-items:center;
-
-    background:
-    radial-gradient(
-        circle at 80% 45%,
-        rgba(255,212,0,.20),
-        transparent 32%
-    ),
-    linear-gradient(
-        90deg,
-        #07080c 20%,
-        rgba(7,8,12,.75),
-        #07080c
-    );
-}
-
-.hero-content{
-    max-width:720px;
-}
-
-.hero h1{
-    font-size:clamp(45px,7vw,76px);
-    line-height:1;
-    letter-spacing:-3px;
-    margin-bottom:25px;
-}
-
-.hero h1 span{
-    color:#ffd400;
-}
-
-.hero p{
-    color:#b8bac4;
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:30px;
-}
-
-.main-button{
-    display:inline-block;
-    padding:14px 25px;
-    border:0;
-    border-radius:9px;
-
-    background:#ffd400;
-    color:#111;
-
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
-
+    font-weight:600;
     transition:.25s;
 }
 
-.main-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(255,212,0,.25);
+nav a:hover{
+    color:#ffd21c;
 }
 
-/* =========================
-   SEARCH
-========================= */
+.profile-btn{
+    border:1px solid #3a3a48;
+    background:#181821;
+    color:white;
+    padding:10px 16px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.profile-btn:hover{
+    border-color:#ffd21c;
+    color:#ffd21c;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:520px;
+    padding:90px 7%;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 75% 45%,rgba(255,210,28,.28),transparent 35%),
+        linear-gradient(120deg,#101018,#0a0a0f 65%);
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    right:-150px;
+    top:-150px;
+    background:#ffd21c;
+    opacity:.06;
+    border-radius:50%;
+    filter:blur(40px);
+}
+
+.hero-content{
+    max-width:700px;
+    position:relative;
+    z-index:2;
+}
+
+.hero small{
+    color:#ffd21c;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.hero h1{
+    font-size:clamp(42px,6vw,78px);
+    line-height:1.02;
+    margin:15px 0;
+}
+
+.hero h1 span{
+    color:#ffd21c;
+}
+
+.hero p{
+    color:#c8c8d0;
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:15px 25px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:#ffd21c;
+    color:#111;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(255,210,28,.25);
+}
+
+.btn-dark{
+    background:#22222d;
+    color:white;
+    border:1px solid #3a3a47;
+}
+
+.btn-dark:hover{
+    border-color:#ffd21c;
+}
+
+/* ================= SEARCH ================= */
 
 .search-area{
-    padding:35px 7% 10px;
+    padding:0 7%;
+    margin-top:-28px;
+    position:relative;
+    z-index:10;
 }
 
 .search-box{
-    width:100%;
-    max-width:700px;
+    display:flex;
+    align-items:center;
+    background:#171720;
+    border:1px solid #363642;
+    border-radius:15px;
+    padding:5px 18px;
+    max-width:850px;
+    margin:auto;
+    box-shadow:0 15px 50px rgba(0,0,0,.35);
+}
 
-    padding:17px 20px;
+.search-box span{
+    font-size:22px;
+}
 
-    border-radius:12px;
-    border:1px solid #30333d;
-
-    background:#15171e;
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
     color:white;
-
+    padding:17px 12px;
     font-size:16px;
-    outline:none;
 }
 
-.search-box:focus{
-    border-color:#ffd400;
+.search-box input::placeholder{
+    color:#858590;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* ================= MAIN ================= */
 
-.container{
-    width:100%;
-    padding:25px 7% 80px;
+main{
+    padding:70px 7%;
 }
 
 .section-title{
-    font-size:29px;
-    margin:35px 0 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:25px;
 }
 
-.section-title span{
-    color:#ffd400;
+.section-title h2{
+    font-size:30px;
 }
 
-/* =========================
-   CATEGORIES
-========================= */
+.section-title p{
+    color:#858590;
+}
+
+/* ================= CATEGORIES ================= */
 
 .categories{
     display:flex;
-    flex-wrap:wrap;
-    gap:12px;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    margin-bottom:45px;
 }
 
 .category{
-    padding:11px 20px;
-
+    flex-shrink:0;
+    background:#1a1a24;
+    color:#bbb;
+    border:1px solid #363642;
     border-radius:25px;
-    border:1px solid #353843;
-
-    background:#191b22;
-    color:#ddd;
-
+    padding:11px 20px;
     cursor:pointer;
-    transition:.2s;
+    transition:.25s;
 }
 
 .category:hover,
 .category.active{
-    background:#ffd400;
+    background:#ffd21c;
     color:#111;
-    border-color:#ffd400;
+    border-color:#ffd21c;
 }
 
-/* =========================
-   MOVIE GRID
-========================= */
+/* ================= MOVIES ================= */
 
-.movies{
+.movie-grid{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
+    grid-template-columns:repeat(4,1fr);
     gap:24px;
 }
 
-/* =========================
-   MOVIE CARD
-========================= */
-
 .movie{
-    background:#15171e;
-
-    border:1px solid #292c35;
+    background:#15151e;
+    border:1px solid #292936;
     border-radius:15px;
-
     overflow:hidden;
-
     transition:.3s;
-
-    position:relative;
 }
 
 .movie:hover{
     transform:translateY(-8px);
-
-    border-color:#ffd400;
-
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.45);
+    border-color:#ffd21c;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 }
 
-/* POSTER */
-
 .poster{
-    height:310px;
-
-    background:#222;
-
+    height:330px;
     position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     overflow:hidden;
 }
 
-.poster img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-    transition:.4s;
+.poster::before{
+    content:"🎬";
+    font-size:70px;
+    opacity:.85;
 }
 
-.movie:hover .poster img{
-    transform:scale(1.05);
+.poster.one{
+    background:linear-gradient(135deg,#5b1111,#171018);
 }
 
-.poster-overlay{
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-        to top,
-        rgba(0,0,0,.75),
-        transparent 60%
-    );
+.poster.two{
+    background:linear-gradient(135deg,#162b4e,#101018);
 }
 
-/* CARD INFO */
+.poster.three{
+    background:linear-gradient(135deg,#463510,#11100c);
+}
+
+.poster.four{
+    background:linear-gradient(135deg,#31205a,#100d19);
+}
+
+.poster.five{
+    background:linear-gradient(135deg,#174b42,#0b1513);
+}
+
+.poster.six{
+    background:linear-gradient(135deg,#552c15,#120e0b);
+}
+
+.poster.seven{
+    background:linear-gradient(135deg,#263b61,#0c1019);
+}
+
+.poster.eight{
+    background:linear-gradient(135deg,#512344,#120c12);
+}
 
 .movie-info{
-    padding:18px;
+    padding:17px;
 }
 
 .movie-title{
-    font-size:19px;
+    font-size:18px;
+    font-weight:bold;
     margin-bottom:8px;
 }
 
-.meta{
-    color:#999da8;
-    font-size:14px;
+.movie-meta{
+    color:#888894;
+    font-size:13px;
     margin-bottom:12px;
 }
 
-.description{
-    color:#b8bac4;
-    font-size:14px;
-    line-height:1.5;
-
-    min-height:42px;
-}
-
 .rating{
-    color:#ffd400;
-    margin:13px 0;
+    color:#ffd21c;
+    font-size:14px;
+    margin-bottom:15px;
 }
 
-.card-buttons{
+.movie-actions{
     display:flex;
     gap:8px;
 }
 
-.watch-button,
-.favorite-button{
-    border:0;
-    border-radius:8px;
-    padding:11px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.watch-button{
+.watch{
     flex:1;
-    background:#ffd400;
+    border:0;
+    background:#ffd21c;
     color:#111;
-}
-
-.favorite-button{
-    width:45px;
-    background:#292c35;
-    color:white;
-}
-
-.favorite-button.active{
-    background:#e63946;
-}
-
-.watch-button:hover{
-    background:#ffe34d;
-}
-
-/* =========================
-   BADGES
-========================= */
-
-.badge{
-    position:absolute;
-
-    top:12px;
-    left:12px;
-
-    z-index:5;
-
-    padding:7px 10px;
-
-    border-radius:7px;
-
-    background:#ffd400;
-    color:#111;
-
-    font-size:12px;
+    padding:11px;
+    border-radius:8px;
     font-weight:bold;
+    cursor:pointer;
 }
 
-/* =========================
-   MODAL
-========================= */
+.favorite{
+    width:45px;
+    border:1px solid #3a3a48;
+    background:#20202b;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.favorite.active{
+    color:#ff4d6d;
+    border-color:#ff4d6d;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+    color:#888894;
+}
+
+/* ================= MODAL ================= */
 
 .modal{
-    display:none;
-
     position:fixed;
     inset:0;
-
-    z-index:2000;
-
-    background:rgba(0,0,0,.85);
-
+    z-index:3000;
+    display:none;
     align-items:center;
     justify-content:center;
-
     padding:20px;
-
+    background:rgba(0,0,0,.78);
     backdrop-filter:blur(8px);
 }
 
-.modal-box{
-    width:100%;
-    max-width:850px;
-
-    max-height:90vh;
-    overflow:auto;
-
-    padding:30px;
-
-    background:#15171e;
-
-    border:1px solid #343743;
-    border-radius:18px;
-
-    position:relative;
-
-    animation:modalOpen .25s ease;
+.modal.show{
+    display:flex;
 }
 
-@keyframes modalOpen{
+.modal-box{
+    width:min(650px,100%);
+    background:#171720;
+    border:1px solid #393946;
+    border-radius:18px;
+    padding:30px;
+    position:relative;
+    animation:pop .25s ease;
+}
 
+@keyframes pop{
     from{
         opacity:0;
-        transform:scale(.94);
+        transform:scale(.92);
     }
-
     to{
         opacity:1;
         transform:scale(1);
     }
-
 }
 
 .close{
     position:absolute;
-
-    right:20px;
-    top:12px;
-
-    font-size:32px;
-
+    top:15px;
+    right:18px;
+    border:0;
+    background:none;
     color:#aaa;
-
+    font-size:28px;
     cursor:pointer;
 }
 
 .close:hover{
-    color:#ffd400;
+    color:#ffd21c;
 }
 
-.modal-content{
-    display:grid;
-
-    grid-template-columns:260px 1fr;
-
-    gap:30px;
-}
-
-.modal-poster{
-    width:100%;
-    height:380px;
-
-    object-fit:cover;
-
-    border-radius:12px;
-}
-
-.modal-info h2{
+.modal h2{
     font-size:32px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.modal-info p{
-    color:#bbb;
+.modal-info{
+    color:#aaa;
+    margin-bottom:20px;
+}
+
+.modal-description{
+    color:#ddd;
     line-height:1.7;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-box{
+    max-width:500px;
+}
+
+.profile-input{
+    width:100%;
+    background:#0e0e15;
+    border:1px solid #3a3a47;
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    outline:none;
     margin:20px 0;
 }
 
-.info-row{
-    display:flex;
-    gap:10px;
-    margin:8px 0;
-
-    color:#bbb;
+.profile-input:focus{
+    border-color:#ffd21c;
 }
 
-.info-row strong{
-    color:white;
-}
-
-/* =========================
-   COMMENTS
-========================= */
-
-.comments{
-    margin-top:30px;
-    border-top:1px solid #30333d;
-    padding-top:25px;
-}
-
-.comments h3{
-    margin-bottom:15px;
-}
-
-.comment-input{
-    width:100%;
-    min-height:90px;
-
-    resize:none;
-
-    padding:14px;
-
-    background:#0f1015;
-    border:1px solid #30333d;
-
-    color:white;
-
-    border-radius:10px;
-
-    outline:none;
-}
-
-.comment-input:focus{
-    border-color:#ffd400;
-}
-
-.comment{
-    background:#101116;
-
-    padding:13px;
-
-    margin-top:12px;
-
-    border-radius:9px;
-
-    color:#bbb;
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile{
-    margin-top:60px;
-
-    padding:25px;
-
-    background:#111319;
-
-    border:1px solid #292c35;
-
-    border-radius:15px;
-}
-
-.profile input{
-    padding:12px;
-
-    background:#0c0d11;
-    border:1px solid #333640;
-
-    color:white;
-
-    border-radius:8px;
-
-    outline:none;
-
-    margin:10px 0;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
-    padding:40px;
-
-    text-align:center;
-
-    background:#0d0e13;
-
-    border-top:1px solid #292c35;
-
-    color:#888;
+    margin-top:80px;
+    padding:40px 7%;
+    border-top:1px solid #292936;
+    background:#0c0c12;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
 }
 
-footer strong{
-    color:#ffd400;
+footer p{
+    color:#777783;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.footer-logo{
+    font-size:21px;
+    font-weight:bold;
+}
 
-@media(max-width:800px){
+.footer-logo span{
+    color:#ffd21c;
+}
 
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+    .movie-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:750px){
     header{
-        padding:0 20px;
+        padding:0 4%;
     }
 
     nav{
         display:none;
     }
 
-    .header-search{
-        width:150px;
-    }
-
     .hero{
-        padding:70px 25px;
+        padding:70px 5%;
+        min-height:500px;
     }
 
-    .hero h1{
-        font-size:45px;
+    main{
+        padding:55px 5%;
     }
 
-    .container,
-    .search-area{
-        padding-left:20px;
-        padding-right:20px;
-    }
-
-    .modal-content{
-        grid-template-columns:1fr;
-    }
-
-    .modal-poster{
-        height:330px;
-        max-width:240px;
-    }
-
-}
-
-@media(max-width:500px){
-
-    .logo{
-        font-size:21px;
-    }
-
-    .header-search{
-        width:130px;
-    }
-
-    .hero h1{
-        font-size:39px;
-    }
-
-    .movies{
+    .movie-grid{
         grid-template-columns:repeat(2,1fr);
-        gap:12px;
+        gap:15px;
     }
 
     .poster{
-        height:240px;
+        height:260px;
     }
-
-    .movie-info{
-        padding:12px;
-    }
-
-    .movie-title{
-        font-size:16px;
-    }
-
 }
 
+@media(max-width:480px){
+    .movie-grid{
+        grid-template-columns:1fr;
+    }
+
+    .poster{
+        height:320px;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .section-title{
+        display:block;
+    }
+
+    .section-title p{
+        margin-top:8px;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-    <div class="logo">
-        🎬 BFilm<span>Cenneti</span>
-    </div>
+<a href="#" class="logo">
+    <span class="logo-icon">🎬</span>
+    BFilm<span>Cenneti</span>
+</a>
 
-    <nav>
-        <a href="#anasayfa">Ana Sayfa</a>
-        <a href="#filmler">Filmler</a>
-        <a href="#kategoriler">Kategoriler</a>
-        <a href="#profil">Profil</a>
-    </nav>
+<nav>
+    <a href="#anasayfa">Ana Sayfa</a>
+    <a href="#filmler">Filmler</a>
+    <a href="#kategoriler">Kategoriler</a>
+    <a href="#" onclick="openProfile()">Profil</a>
+</nav>
 
-    <input
-        id="headerSearch"
-        class="header-search"
-        placeholder="🔎 Ara..."
-        onkeyup="syncSearch()"
-    >
+<button class="profile-btn" onclick="openProfile()">👤 Profil</button>
 
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero" id="anasayfa">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h1>
-            Film Dünyasına
-            <span>Hoş Geldin</span>
-        </h1>
+<small>🎬 BİLİM KURGU • AKSİYON • KORKU • KOMEDİ</small>
 
-        <p>
-            Filmleri keşfet, favorilerine ekle,
-            puanla ve sinema dünyasının tadını çıkar.
-        </p>
+<h1>
+Film Dünyasına
+<span>Hoş Geldin</span>
+</h1>
 
-        <a
-            href="#filmler"
-            class="main-button"
-        >
-            🎬 Filmleri Keşfet
-        </a>
+<p>
+En sevdiğin filmleri keşfet, favorilerine ekle,
+puanlarını incele ve kendine özel film koleksiyonunu oluştur.
+</p>
 
-    </div>
+<div class="hero-buttons">
 
-</section>
+<button class="btn btn-primary"
+onclick="document.getElementById('filmler').scrollIntoView()">
+Filmleri Keşfet
+</button>
 
+<button class="btn btn-dark"
+onclick="openProfile()">
+👤 Profil Oluştur
+</button>
 
-<!-- SEARCH -->
+</div>
 
-<section class="search-area">
-
-    <input
-        id="search"
-        class="search-box"
-        placeholder="🔎 Film, tür veya yıl ara..."
-        onkeyup="searchMovies()"
-    >
+</div>
 
 </section>
 
 
-<main class="container">
+<!-- ================= SEARCH ================= -->
+
+<div class="search-area">
+
+<div class="search-box">
+
+<span>🔎</span>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Film, tür veya yıl ara..."
+oninput="searchMovies()">
+
+</div>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
 
 <!-- KATEGORİLER -->
 
-<h2
-    class="section-title"
-    id="kategoriler"
->
-    🎭 Kategoriler
-</h2>
+<section id="kategoriler">
+
+<div class="section-title">
+
+<div>
+<h2>Kategoriler</h2>
+<p>İstediğin türde filmleri keşfet.</p>
+</div>
+
+</div>
 
 <div class="categories">
 
-    <button
-        class="category active"
-        onclick="filterMovies('all',this)"
-    >
-        Tümü
-    </button>
+<button class="category active"
+onclick="filterMovies('all',this)">
+Tümü
+</button>
 
-    <button
-        class="category"
-        onclick="filterMovies('aksiyon',this)"
-    >
-        Aksiyon
-    </button>
+<button class="category"
+onclick="filterMovies('Korku',this)">
+Korku
+</button>
 
-    <button
-        class="category"
-        onclick="filterMovies('korku',this)"
-    >
-        Korku
-    </button>
+<button class="category"
+onclick="filterMovies('Komedi',this)">
+Komedi
+</button>
 
-    <button
-        class="category"
-        onclick="filterMovies('komedi',this)"
-    >
-        Komedi
-    </button>
+<button class="category"
+onclick="filterMovies('Aksiyon',this)">
+Aksiyon
+</button>
 
-    <button
-        class="category"
-        onclick="filterMovies('klasik',this)"
-    >
-        Klasik
-    </button>
+<button class="category"
+onclick="filterMovies('Bilim Kurgu',this)">
+Bilim Kurgu
+</button>
+
+<button class="category"
+onclick="filterMovies('Klasik',this)">
+Klasik
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FİLMLER -->
+
+<section id="filmler">
+
+<div class="section-title">
+
+<div>
+<h2>🔥 Popüler Filmler</h2>
+<p>Bugün en çok ilgi gören yapımlar.</p>
+</div>
 
 </div>
 
 
-<!-- POPÜLER -->
-
-<h2 class="section-title">
-    🔥 <span>Popüler</span> Filmler
-</h2>
-
-<div
-    class="movies"
-    id="movieList"
->
+<div class="movie-grid" id="movieGrid">
 
 
-<!-- FILM 1 -->
+<!-- 1 -->
 
-<div
-    class="movie"
-    data-category="korku"
-    data-title="Night of the Living Dead"
-    data-year="1968"
->
+<div class="movie"
+data-category="Korku"
+data-title="Gece Yarısı"
+data-year="2024">
 
-    <div class="poster">
+<div class="poster one"></div>
 
-        <div class="badge">
-            POPÜLER
-        </div>
+<div class="movie-info">
 
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Night_of_the_Living_Dead_%281968%29_Title_Screen.png"
-            alt="Night of the Living Dead"
-        >
+<div class="movie-title">
+Gece Yarısı
+</div>
 
-        <div class="poster-overlay"></div>
+<div class="movie-meta">
+2024 • Korku
+</div>
 
-    </div>
+<div class="rating">
+★★★★★ <span style="color:#777">8.7</span>
+</div>
 
-    <div class="movie-info">
+<div class="movie-actions">
 
-        <h3 class="movie-title">
-            Night of the Living Dead
-        </h3>
+<button class="watch"
+onclick="showMovie('Gece Yarısı','2024 • Korku','Karanlık bir gecede başlayan gizemli olaylar, genç bir grubun hayatını tamamen değiştirir.')">
+İncele
+</button>
 
-        <div class="meta">
-            1968 • Korku
-        </div>
-
-        <div class="description">
-            Klasik korku sinemasının önemli yapımlarından.
-        </div>
-
-        <div class="rating">
-            ★★★★★
-        </div>
-
-        <div class="card-buttons">
-
-            <button
-                class="watch-button"
-                onclick="openMovie(
-                'Night of the Living Dead',
-                '1968',
-                'Korku',
-                'Klasik korku sinemasının önemli yapımlarından.',
-                'https://upload.wikimedia.org/wikipedia/commons/5/5f/Night_of_the_Living_Dead_%281968%29_Title_Screen.png'
-                )"
-            >
-                ▶ Detay
-            </button>
-
-            <button
-                class="favorite-button"
-                onclick="toggleFavorite(this,'Night of the Living Dead')"
-            >
-                ♡
-            </button>
-
-        </div>
-
-    </div>
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
 
 </div>
 
-
-<!-- FILM 2 -->
-
-<div
-    class="movie"
-    data-category="komedi"
-    data-title="His Girl Friday"
-    data-year="1940"
->
-
-    <div class="poster">
-
-        <div class="badge">
-            KLASİK
-        </div>
-
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/57/His_Girl_Friday_%281940%29.jpg"
-            alt="His Girl Friday"
-        >
-
-        <div class="poster-overlay"></div>
-
-    </div>
-
-    <div class="movie-info">
-
-        <h3 class="movie-title">
-            His Girl Friday
-        </h3>
-
-        <div class="meta">
-            1940 • Komedi
-        </div>
-
-        <div class="description">
-            Klasik Hollywood döneminden eğlenceli bir komedi.
-        </div>
-
-        <div class="rating">
-            ★★★★★
-        </div>
-
-        <div class="card-buttons">
-
-            <button
-                class="watch-button"
-                onclick="openMovie(
-                'His Girl Friday',
-                '1940',
-                'Komedi',
-                'Klasik Hollywood döneminden eğlenceli bir komedi.',
-                'https://upload.wikimedia.org/wikipedia/commons/5/57/His_Girl_Friday_%281940%29.jpg'
-                )"
-            >
-                ▶ Detay
-            </button>
-
-            <button
-                class="favorite-button"
-                onclick="toggleFavorite(this,'His Girl Friday')"
-            >
-                ♡
-            </button>
-
-        </div>
-
-    </div>
-
+</div>
 </div>
 
 
-<!-- FILM 3 -->
+<!-- 2 -->
 
-<div
-    class="movie"
-    data-category="klasik"
-    data-title="The General"
-    data-year="1926"
->
+<div class="movie"
+data-category="Aksiyon"
+data-title="Son Savaş"
+data-year="2025">
 
-    <div class="poster">
+<div class="poster two"></div>
 
-        <div class="badge">
-            KLASİK
-        </div>
+<div class="movie-info">
 
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/8/87/The_General_%281926%29.jpg"
-            alt="The General"
-        >
+<div class="movie-title">
+Son Savaş
+</div>
 
-        <div class="poster-overlay"></div>
+<div class="movie-meta">
+2025 • Aksiyon
+</div>
 
-    </div>
+<div class="rating">
+★★★★★ <span style="color:#777">8.5</span>
+</div>
 
-    <div class="movie-info">
+<div class="movie-actions">
 
-        <h3 class="movie-title">
-            The General
-        </h3>
+<button class="watch"
+onclick="showMovie('Son Savaş','2025 • Aksiyon','Tehlikeli bir görev için bir araya gelen ekip, beklenmedik bir düşmanla karşılaşır.')">
+İncele
+</button>
 
-        <div class="meta">
-            1926 • Klasik
-        </div>
-
-        <div class="description">
-            Sessiz sinema döneminin unutulmaz yapımlarından.
-        </div>
-
-        <div class="rating">
-            ★★★★★
-        </div>
-
-        <div class="card-buttons">
-
-            <button
-                class="watch-button"
-                onclick="openMovie(
-                'The General',
-                '1926',
-                'Klasik',
-                'Sessiz sinema döneminin unutulmaz yapımlarından.',
-                'https://upload.wikimedia.org/wikipedia/commons/8/87/The_General_%281926%29.jpg'
-                )"
-            >
-                ▶ Detay
-            </button>
-
-            <button
-                class="favorite-button"
-                onclick="toggleFavorite(this,'The General')"
-            >
-                ♡
-            </button>
-
-        </div>
-
-    </div>
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
 
 </div>
 
+</div>
+</div>
 
-<!-- FILM 4 -->
 
-<div
-    class="movie"
-    data-category="aksiyon"
-    data-title="Public Domain Collection"
-    data-year="1920"
->
+<!-- 3 -->
 
-    <div class="poster">
+<div class="movie"
+data-category="Komedi"
+data-title="Talihsiz Gün"
+data-year="2023">
 
-        <div class="badge">
-            ÜCRETSİZ
-        </div>
+<div class="poster three"></div>
 
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Charlie_Chaplin%2C_The_Kid%2C_1921.jpg/800px-Charlie_Chaplin%2C_The_Kid%2C_1921.jpg"
-            alt="Public Domain Collection"
-        >
+<div class="movie-info">
 
-        <div class="poster-overlay"></div>
+<div class="movie-title">
+Talihsiz Gün
+</div>
 
-    </div>
+<div class="movie-meta">
+2023 • Komedi
+</div>
 
-    <div class="movie-info">
+<div class="rating">
+★★★★☆ <span style="color:#777">8.1</span>
+</div>
 
-        <h3 class="movie-title">
-            Public Domain Collection
-        </h3>
+<div class="movie-actions">
 
-        <div class="meta">
-            Klasikler • Public Domain
-        </div>
+<button class="watch"
+onclick="showMovie('Talihsiz Gün','2023 • Komedi','Her şeyin ters gittiği bir günde sıradan bir adamın başına gelen komik olaylar.')">
+İncele
+</button>
 
-        <div class="description">
-            Kamu malı statüsündeki klasik eserlerden seçki.
-        </div>
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
 
-        <div class="rating">
-            ★★★★☆
-        </div>
+</div>
 
-        <div class="card-buttons">
+</div>
+</div>
 
-            <button
-                class="watch-button"
-                onclick="openMovie(
-                'Public Domain Collection',
-                'Klasikler',
-                'Public Domain',
-                'Kamu malı statüsündeki klasik eserlerden seçki.',
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Charlie_Chaplin%2C_The_Kid%2C_1921.jpg/800px-Charlie_Chaplin%2C_The_Kid%2C_1921.jpg'
-                )"
-            >
-                ▶ Detay
-            </button>
 
-            <button
-                class="favorite-button"
-                onclick="toggleFavorite(this,'Public Domain Collection')"
-            >
-                ♡
-            </button>
+<!-- 4 -->
 
-        </div>
+<div class="movie"
+data-category="Bilim Kurgu"
+data-title="Son Dünya"
+data-year="2025">
 
-    </div>
+<div class="poster four"></div>
 
+<div class="movie-info">
+
+<div class="movie-title">
+Son Dünya
+</div>
+
+<div class="movie-meta">
+2025 • Bilim Kurgu
+</div>
+
+<div class="rating">
+★★★★★ <span style="color:#777">9.0</span>
+</div>
+
+<div class="movie-actions">
+
+<button class="watch"
+onclick="showMovie('Son Dünya','2025 • Bilim Kurgu','İnsanlığın geleceğini değiştirecek gizemli bir keşfin ardından başlayan büyük macera.')">
+İncele
+</button>
+
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 5 -->
+
+<div class="movie"
+data-category="Korku"
+data-title="Karanlık Ev"
+data-year="2022">
+
+<div class="poster five"></div>
+
+<div class="movie-info">
+
+<div class="movie-title">
+Karanlık Ev
+</div>
+
+<div class="movie-meta">
+2022 • Korku
+</div>
+
+<div class="rating">
+★★★★☆ <span style="color:#777">7.9</span>
+</div>
+
+<div class="movie-actions">
+
+<button class="watch"
+onclick="showMovie('Karanlık Ev','2022 • Korku','Yıllardır boş duran bir evin sırrını araştıran üç arkadaş, beklemedikleri bir gerçekle yüzleşir.')">
+İncele
+</button>
+
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 6 -->
+
+<div class="movie"
+data-category="Aksiyon"
+data-title="Hızlı Görev"
+data-year="2024">
+
+<div class="poster six"></div>
+
+<div class="movie-info">
+
+<div class="movie-title">
+Hızlı Görev
+</div>
+
+<div class="movie-meta">
+2024 • Aksiyon
+</div>
+
+<div class="rating">
+★★★★★ <span style="color:#777">8.4</span>
+</div>
+
+<div class="movie-actions">
+
+<button class="watch"
+onclick="showMovie('Hızlı Görev','2024 • Aksiyon','Zamana karşı yarışan özel ekip, dünyayı tehdit eden planı durdurmaya çalışır.')">
+İncele
+</button>
+
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 7 -->
+
+<div class="movie"
+data-category="Klasik"
+data-title="Eski Hikaye"
+data-year="1998">
+
+<div class="poster seven"></div>
+
+<div class="movie-info">
+
+<div class="movie-title">
+Eski Hikaye
+</div>
+
+<div class="movie-meta">
+1998 • Klasik
+</div>
+
+<div class="rating">
+★★★★★ <span style="color:#777">9.1</span>
+</div>
+
+<div class="movie-actions">
+
+<button class="watch"
+onclick="showMovie('Eski Hikaye','1998 • Klasik','Yıllar geçse de unutulmayan, sinema tarihine damgasını vurmuş özel bir hikâye.')">
+İncele
+</button>
+
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 8 -->
+
+<div class="movie"
+data-category="Komedi"
+data-title="Büyük Macera"
+data-year="2021">
+
+<div class="poster eight"></div>
+
+<div class="movie-info">
+
+<div class="movie-title">
+Büyük Macera
+</div>
+
+<div class="movie-meta">
+2021 • Komedi
+</div>
+
+<div class="rating">
+★★★★☆ <span style="color:#777">8.0</span>
+</div>
+
+<div class="movie-actions">
+
+<button class="watch"
+onclick="showMovie('Büyük Macera','2021 • Komedi','Bir grup arkadaşın çıktığı yolculuk, beklenmedik ve eğlenceli olaylarla dolu bir maceraya dönüşür.')">
+İncele
+</button>
+
+<button class="favorite"
+onclick="favoriteMovie(this)">
+♡
+</button>
+
+</div>
+
+</div>
 </div>
 
 
 </div>
 
-
-<!-- PROFİL -->
-
-<section
-    class="profile"
-    id="profil"
->
-
-    <h2>
-        👤 Profil
-    </h2>
-
-    <p
-        style="color:#aaa;margin-top:10px;"
-    >
-        İsmini kaydet ve favorilerini tarayıcında sakla.
-    </p>
-
-    <input
-        id="username"
-        placeholder="Kullanıcı adın"
-    >
-
-    <br>
-
-    <button
-        class="main-button"
-        onclick="saveUser()"
-    >
-        Kaydet
-    </button>
-
-    <p
-        id="userMessage"
-        style="margin-top:12px;color:#ffd400;"
-    ></p>
+<div class="empty" id="empty">
+<h2>😕 Film bulunamadı</h2>
+<p>Başka bir film adı, tür veya yıl deneyebilirsin.</p>
+</div>
 
 </section>
 
 </main>
 
 
-<!-- MODAL -->
+<!-- ================= FILM MODAL ================= -->
 
-<div
-    class="modal"
-    id="movieModal"
->
+<div class="modal" id="movieModal">
 
-    <div class="modal-box">
+<div class="modal-box">
 
-        <span
-            class="close"
-            onclick="closeMovie()"
-        >
-            ×
-        </span>
+<button class="close" onclick="closeModal()">×</button>
 
-        <div class="modal-content">
+<h2 id="modalTitle"></h2>
 
-            <img
-                id="modalPoster"
-                class="modal-poster"
-                src=""
-                alt=""
-            >
+<div class="modal-info" id="modalInfo"></div>
 
-            <div class="modal-info">
+<p class="modal-description" id="modalDescription"></p>
 
-                <h2 id="modalTitle"></h2>
+<br>
 
-                <div
-                    class="info-row"
-                >
-                    <strong>Yıl:</strong>
-                    <span id="modalYear"></span>
-                </div>
+<button class="btn btn-primary" onclick="closeModal()">
+Tamam
+</button>
 
-                <div
-                    class="info-row"
-                >
-                    <strong>Tür:</strong>
-                    <span id="modalGenre"></span>
-                </div>
-
-                <p id="modalDescription"></p>
-
-                <button
-                    class="main-button"
-                    onclick="showLegalMessage()"
-                >
-                    ▶ Yasal İzleme Seçenekleri
-                </button>
-
-                <div class="comments">
-
-                    <h3>
-                        💬 Yorumlar
-                    </h3>
-
-                    <textarea
-                        id="commentInput"
-                        class="comment-input"
-                        placeholder="Bu film hakkında ne düşünüyorsun?"
-                    ></textarea>
-
-                    <br><br>
-
-                    <button
-                        class="main-button"
-                        onclick="addComment()"
-                    >
-                        Yorum Ekle
-                    </button>
-
-                    <div id="commentsList"></div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
+<!-- ================= PROFILE MODAL ================= -->
+
+<div class="modal" id="profileModal">
+
+<div class="modal-box profile-box">
+
+<button class="close" onclick="closeProfile()">×</button>
+
+<h2>👤 Profil</h2>
+
+<p style="color:#999;margin-top:8px">
+BFilmCenneti'ndeki adını belirle.
+</p>
+
+<input
+class="profile-input"
+id="usernameInput"
+placeholder="Adını yaz...">
+
+<button
+class="btn btn-primary"
+onclick="saveProfile()">
+Kaydet
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
-    <strong>BFilmCenneti</strong>
+<div>
 
-    <br><br>
+<div class="footer-logo">
+🎬 BFilm<span>Cenneti</span>
+</div>
 
-    Film keşfetme ve sinema platformu.
+<p style="margin-top:10px">
+Film dünyasını keşfetmenin yeni adresi.
+</p>
 
-    <br><br>
+</div>
 
-    © 2026 BFilmCenneti
+<div>
+<p>© 2026 BFilmCenneti</p>
+<p style="margin-top:7px">Tüm hakları saklıdır.</p>
+</div>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   ARAMA
-========================= */
+/* ================= ARAMA ================= */
 
 function searchMovies(){
 
-    const value =
-        document
-        .getElementById("search")
+    const search =
+        document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
-    document
-        .querySelectorAll(".movie")
-        .forEach(movie => {
+    const movies =
+        document.querySelectorAll(".movie");
 
-            const title =
-                movie.dataset.title.toLowerCase();
+    let found = 0;
 
-            const category =
-                movie.dataset.category.toLowerCase();
+    movies.forEach(movie => {
 
-            const year =
-                movie.dataset.year.toLowerCase();
+        const title =
+            movie.dataset.title.toLowerCase();
 
-            if(
-                title.includes(value) ||
-                category.includes(value) ||
-                year.includes(value)
-            ){
+        const category =
+            movie.dataset.category.toLowerCase();
 
-                movie.style.display="block";
+        const year =
+            movie.dataset.year.toLowerCase();
 
-            }else{
+        if(
+            title.includes(search) ||
+            category.includes(search) ||
+            year.includes(search)
+        ){
+            movie.style.display = "";
+            found++;
+        }else{
+            movie.style.display = "none";
+        }
 
-                movie.style.display="none";
+    });
 
-            }
-
-        });
-
+    document.getElementById("empty").style.display =
+        found === 0 ? "block" : "none";
 }
 
 
-/* HEADER SEARCH */
+/* ================= KATEGORİ ================= */
 
-function syncSearch(){
-
-    const header =
-        document.getElementById("headerSearch");
-
-    const main =
-        document.getElementById("search");
-
-    main.value = header.value;
-
-    searchMovies();
-
-}
-
-
-/* =========================
-   KATEGORİ
-========================= */
-
-function filterMovies(category,button){
+function filterMovies(category, button){
 
     document
         .querySelectorAll(".category")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
+        .forEach(btn => btn.classList.remove("active"));
 
     button.classList.add("active");
 
-    document
-        .querySelectorAll(".movie")
-        .forEach(movie => {
+    const movies =
+        document.querySelectorAll(".movie");
 
-            if(
-                category === "all" ||
-                movie.dataset.category === category
-            ){
+    let found = 0;
 
-                movie.style.display="block";
+    movies.forEach(movie => {
 
-            }else{
+        if(
+            category === "all" ||
+            movie.dataset.category === category
+        ){
 
-                movie.style.display="none";
+            movie.style.display = "";
+            found++;
 
-            }
+        }else{
 
-        });
+            movie.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("empty").style.display =
+        found === 0 ? "block" : "none";
 
 }
 
 
-/* =========================
-   FAVORİ
-========================= */
+/* ================= FİLM DETAY ================= */
 
-function toggleFavorite(button,title){
+function showMovie(title, info, description){
 
-    let favorites =
-        JSON.parse(
-            localStorage.getItem("favorites") || "[]"
-        );
+    document.getElementById("modalTitle")
+        .textContent = title;
 
-    if(favorites.includes(title)){
+    document.getElementById("modalInfo")
+        .textContent = info;
 
-        favorites =
-            favorites.filter(item => item !== title);
+    document.getElementById("modalDescription")
+        .textContent = description;
 
-        button.classList.remove("active");
-        button.textContent="♡";
+    document.getElementById("movieModal")
+        .classList.add("show");
+}
+
+function closeModal(){
+
+    document.getElementById("movieModal")
+        .classList.remove("show");
+
+}
+
+
+/* ================= FAVORİ ================= */
+
+function favoriteMovie(button){
+
+    button.classList.toggle("active");
+
+    if(button.classList.contains("active")){
+
+        button.textContent = "♥";
 
     }else{
 
-        favorites.push(title);
+        button.textContent = "♡";
 
-        button.classList.add("active");
-        button.textContent="♥";
+    }
+}
+
+
+/* ================= PROFİL ================= */
+
+function openProfile(){
+
+    const saved =
+        localStorage.getItem("username");
+
+    if(saved){
+
+        document.getElementById("usernameInput")
+            .value = saved;
 
     }
 
-    localStorage.setItem(
-        "favorites",
-        JSON.stringify(favorites)
-    );
+    document.getElementById("profileModal")
+        .classList.add("show");
+}
+
+function closeProfile(){
+
+    document.getElementById("profileModal")
+        .classList.remove("show");
 
 }
 
-
-/* =========================
-   FİLM DETAY
-========================= */
-
-let currentMovie="";
-
-
-function openMovie(
-    title,
-    year,
-    genre,
-    description,
-    poster
-){
-
-    currentMovie=title;
-
-    document.getElementById("modalTitle")
-        .textContent=title;
-
-    document.getElementById("modalYear")
-        .textContent=year;
-
-    document.getElementById("modalGenre")
-        .textContent=genre;
-
-    document.getElementById("modalDescription")
-        .textContent=description;
-
-    document.getElementById("modalPoster")
-        .src=poster;
-
-    document.getElementById("movieModal")
-        .style.display="flex";
-
-    loadComments();
-
-}
-
-
-function closeMovie(){
-
-    document.getElementById("movieModal")
-        .style.display="none";
-
-}
-
-
-/* =========================
-   YASAL İZLEME
-========================= */
-
-function showLegalMessage(){
-
-    alert(
-        "İzleme bağlantıları yalnızca kamu malı, lisanslı veya resmi kaynaklardan eklenmelidir."
-    );
-
-}
-
-
-/* =========================
-   YORUMLAR
-========================= */
-
-function addComment(){
-
-    const input =
-        document.getElementById("commentInput");
-
-    const text =
-        input.value.trim();
-
-    if(!text){
-
-        alert("Önce bir yorum yaz.");
-
-        return;
-
-    }
-
-    let comments =
-        JSON.parse(
-            localStorage.getItem(
-                "comments_"+currentMovie
-            ) || "[]"
-        );
-
-    comments.push({
-        text:text,
-        date:new Date().toLocaleDateString("tr-TR")
-    });
-
-    localStorage.setItem(
-        "comments_"+currentMovie,
-        JSON.stringify(comments)
-    );
-
-    input.value="";
-
-    loadComments();
-
-}
-
-
-function loadComments(){
-
-    const list =
-        document.getElementById("commentsList");
-
-    list.innerHTML="";
-
-    let comments =
-        JSON.parse(
-            localStorage.getItem(
-                "comments_"+currentMovie
-            ) || "[]"
-        );
-
-    comments.forEach(comment => {
-
-        const div =
-            document.createElement("div");
-
-        div.className="comment";
-
-        div.innerHTML =
-            "💬 "+escapeHTML(comment.text)+
-            "<br><small>"+comment.date+"</small>";
-
-        list.appendChild(div);
-
-    });
-
-}
-
-
-/* GÜVENLİ METİN */
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement("div");
-
-    div.textContent=text;
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
-   PROFİL
-========================= */
-
-function saveUser(){
+function saveProfile(){
 
     const username =
-        document
-        .getElementById("username")
+        document.getElementById("usernameInput")
         .value
         .trim();
 
     if(!username){
 
-        alert("Bir kullanıcı adı yaz.");
+        alert("Lütfen bir isim yaz.");
 
         return;
-
     }
 
     localStorage.setItem(
@@ -1550,77 +1314,75 @@ function saveUser(){
         username
     );
 
-    document
-        .getElementById("userMessage")
-        .textContent =
-        "Hoş geldin, "+username+"!";
+    alert(
+        "Hoş geldin, " +
+        username +
+        "!"
+    );
 
+    closeProfile();
 }
 
 
-/* =========================
-   MODAL DIŞINA TIKLAMA
-========================= */
+/* ================= DIŞARI TIKLAMA ================= */
 
-window.addEventListener(
-    "click",
-    function(event){
+window.addEventListener("click", function(event){
 
-        const modal =
-            document.getElementById("movieModal");
+    const movieModal =
+        document.getElementById("movieModal");
 
-        if(event.target === modal){
+    const profileModal =
+        document.getElementById("profileModal");
 
-            closeMovie();
+    if(event.target === movieModal){
 
-        }
+        closeModal();
 
     }
-);
 
+    if(event.target === profileModal){
 
-/* ESC */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key==="Escape"){
-
-            closeMovie();
-
-        }
+        closeProfile();
 
     }
-);
+
+});
 
 
-/* =========================
-   KAYITLI KULLANICI
-========================= */
+/* ================= KLAVYE ================= */
 
-window.addEventListener(
-    "DOMContentLoaded",
-    function(){
+document.addEventListener("keydown", function(event){
 
-        const username =
-            localStorage.getItem("username");
+    if(event.key === "Escape"){
 
-        if(username){
-
-            document
-                .getElementById("username")
-                .value=username;
-
-            document
-                .getElementById("userMessage")
-                .textContent=
-                "Hoş geldin, "+username+"!";
-
-        }
+        closeModal();
+        closeProfile();
 
     }
-);
+
+});
+
+
+/* ================= HOŞ GELDİN MESAJI ================= */
+
+window.addEventListener("DOMContentLoaded", function(){
+
+    const username =
+        localStorage.getItem("username");
+
+    if(username){
+
+        const heroText =
+            document.querySelector(".hero p");
+
+        heroText.textContent =
+            "Hoş geldin " +
+            username +
+            "! En sevdiğin filmleri keşfetmeye devam et.";
+
+    }
+
+});
 
 </script>
 
