@@ -3,119 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BFilmcenneti</title>
+
+<title>BFilmCenneti - Film Dünyası</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-    font-family:Arial,sans-serif;
-    background:#08090d;
-    color:#fff;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+body{
+    font-family:Arial, sans-serif;
+    background:#080808;
+    color:white;
+}
+
+/* ÜST MENÜ */
 header{
-    background:#11131a;
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#111;
+    border-bottom:1px solid #292929;
     padding:18px 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    position:sticky;
-    top:0;
-    z-index:10;
-    border-bottom:1px solid #252833;
+    gap:20px;
 }
 
 .logo{
-    font-size:27px;
+    font-size:28px;
     font-weight:bold;
-    color:#ffcc00;
+    color:#ffd21c;
+}
+
+.logo span{
+    color:white;
 }
 
 nav{
     display:flex;
-    gap:22px;
+    gap:25px;
 }
 
 nav a{
     color:#ddd;
     text-decoration:none;
+    font-weight:bold;
 }
 
 nav a:hover{
-    color:#ffcc00;
+    color:#ffd21c;
 }
 
-.hero{
-    padding:80px 6%;
-    background:linear-gradient(135deg,#191b28,#08090d);
-}
-
-.hero h1{
-    font-size:50px;
-    margin-bottom:15px;
-}
-
-.hero p{
-    color:#aaa;
-    font-size:18px;
-    margin-bottom:25px;
-}
-
+/* ARAMA */
 .search{
-    width:100%;
-    max-width:650px;
-    padding:16px 20px;
-    border-radius:30px;
-    border:1px solid #333;
-    background:#191b23;
-    color:#fff;
-    font-size:16px;
+    padding:11px 18px;
+    border-radius:25px;
+    border:1px solid #444;
+    background:#1b1b1b;
+    color:white;
     outline:none;
+    width:220px;
 }
 
 .search:focus{
-    border-color:#ffcc00;
+    border-color:#ffd21c;
 }
 
-.container{
-    width:88%;
-    max-width:1400px;
-    margin:auto;
-    padding:40px 0 70px;
+/* HERO */
+.hero{
+    min-height:430px;
+    display:flex;
+    align-items:center;
+    padding:60px 8%;
+    background:
+    linear-gradient(90deg,#080808 20%,rgba(8,8,8,.75),rgba(8,8,8,.15)),
+    radial-gradient(circle at 75% 50%,#4b3900,#111 55%,#080808);
 }
 
-.title{
-    font-size:28px;
+.hero-content{
+    max-width:650px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#ffd21c;
+}
+
+.hero p{
+    color:#ccc;
+    font-size:18px;
+    line-height:1.7;
     margin-bottom:25px;
 }
 
+.hero-btn{
+    display:inline-block;
+    padding:14px 25px;
+    background:#ffd21c;
+    color:#111;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* GENEL */
+.container{
+    width:88%;
+    max-width:1400px;
+    margin:45px auto;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    font-size:28px;
+}
+
+.section-title span{
+    color:#ffd21c;
+}
+
+/* KATEGORİLER */
+.categories{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.category{
+    padding:10px 18px;
+    border-radius:25px;
+    background:#191919;
+    color:#ddd;
+    border:1px solid #333;
+    cursor:pointer;
+}
+
+.category:hover,
+.category.active{
+    background:#ffd21c;
+    color:#111;
+    border-color:#ffd21c;
+}
+
+/* FİLMLER */
 .movies{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
 }
 
 .movie{
-    background:#13151c;
+    background:#151515;
     border-radius:12px;
     overflow:hidden;
-    border:1px solid #252833;
-    transition:.25s;
+    border:1px solid #272727;
+    transition:.3s;
 }
 
 .movie:hover{
     transform:translateY(-7px);
-    border-color:#ffcc00;
+    border-color:#ffd21c;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 
 .poster{
     height:290px;
+    background:linear-gradient(145deg,#282828,#101010);
     display:flex;
     align-items:center;
     justify-content:center;
-    background:linear-gradient(135deg,#33374a,#151720);
-    font-size:55px;
+    font-size:70px;
 }
 
 .info{
@@ -123,93 +195,102 @@ nav a:hover{
 }
 
 .info h3{
+    font-size:19px;
     margin-bottom:8px;
 }
 
-.year{
+.meta{
     color:#999;
     font-size:14px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .description{
-    color:#aaa;
-    font-size:13px;
+    color:#bbb;
+    font-size:14px;
     line-height:1.5;
-    min-height:60px;
+    min-height:42px;
 }
 
 .rating{
-    color:#ffcc00;
-    margin:12px 0;
+    color:#ffd21c;
+    margin:13px 0;
 }
 
 .watch{
     display:block;
     text-align:center;
-    background:#ffcc00;
+    padding:11px;
+    background:#ffd21c;
     color:#111;
     text-decoration:none;
-    font-weight:bold;
-    padding:11px;
     border-radius:7px;
+    font-weight:bold;
 }
 
 .watch:hover{
     background:#fff;
 }
 
-.about{
-    margin-top:50px;
-    padding:25px;
-    background:#13151c;
-    border:1px solid #252833;
-    border-radius:10px;
-    color:#aaa;
-    line-height:1.6;
+/* FOOTER */
+footer{
+    margin-top:70px;
+    padding:40px 8%;
+    background:#111;
+    border-top:1px solid #292929;
+    text-align:center;
+    color:#888;
 }
 
-footer{
-    background:#11131a;
-    padding:30px;
-    text-align:center;
-    color:#777;
+footer strong{
+    color:#ffd21c;
+}
+
+/* MOBİL */
+@media(max-width:1000px){
+    .movies{
+        grid-template-columns:repeat(3,1fr);
+    }
 }
 
 @media(max-width:700px){
-
     header{
         flex-direction:column;
-        gap:15px;
     }
 
     nav{
-        gap:14px;
+        gap:15px;
+    }
+
+    .search{
+        width:100%;
     }
 
     .hero{
-        padding:55px 6%;
+        min-height:380px;
+        padding:45px 7%;
     }
 
     .hero h1{
-        font-size:36px;
+        font-size:40px;
     }
 
     .movies{
         grid-template-columns:repeat(2,1fr);
-        gap:12px;
     }
 
     .poster{
         height:220px;
     }
+}
 
-    .info{
-        padding:12px;
+@media(max-width:450px){
+    .movies{
+        grid-template-columns:1fr;
     }
 
-    .info h3{
-        font-size:15px;
+    .hero h1{
+        font-size:34px;
     }
 }
 </style>
@@ -219,221 +300,374 @@ footer{
 
 <header>
 
-    <div class="logo">🎬 BFilmcenneti</div>
+<div class="logo">
+🎬 <span>B</span>FilmCenneti
+</div>
 
-    <nav>
-        <a href="#">Ana Sayfa</a>
-        <a href="#filmler">Filmler</a>
-        <a href="#hakkinda">Hakkında</a>
-    </nav>
+<nav>
+<a href="#">Ana Sayfa</a>
+<a href="#filmler">Filmler</a>
+<a href="#kategoriler">Kategoriler</a>
+</nav>
+
+<input
+class="search"
+id="search"
+type="text"
+placeholder="🔎 Film ara..."
+>
 
 </header>
 
 
 <section class="hero">
 
-    <h1>BFilmcenneti</h1>
+<div class="hero-content">
 
-    <p>
-        Kamu malı ve paylaşım izni bulunan filmleri keşfet.
-    </p>
+<h1>Film Dünyasına <span>Hoş Geldin</span></h1>
 
-    <input
-        id="search"
-        class="search"
-        type="text"
-        placeholder="🔎 Film ara..."
-        onkeyup="searchMovies()"
-    >
+<p>
+En sevdiğin filmleri keşfet, yeni yapımlar bul
+ve sinema dünyasının keyfini çıkar.
+</p>
+
+<a href="#filmler" class="hero-btn">
+Filmleri Keşfet
+</a>
+
+</div>
 
 </section>
 
 
 <main class="container">
 
-    <h2 class="title" id="filmler">
-        🎬 Popüler Filmler
-    </h2>
+<div class="section-title">
+<h2 id="kategoriler">Kategoriler</h2>
+<span>Film Cenneti</span>
+</div>
 
-    <div class="movies">
+<div class="categories">
 
+<button class="category active" onclick="filterMovies('all')">
+Tümü
+</button>
 
-        <div class="movie">
+<button class="category" onclick="filterMovies('Korku')">
+Korku
+</button>
 
-            <div class="poster">🎬</div>
+<button class="category" onclick="filterMovies('Komedi')">
+Komedi
+</button>
 
-            <div class="info">
+<button class="category" onclick="filterMovies('Aksiyon')">
+Aksiyon
+</button>
 
-                <h3>Night of the Living Dead</h3>
+<button class="category" onclick="filterMovies('Klasik')">
+Klasik
+</button>
 
-                <div class="year">1968 • Korku</div>
-
-                <div class="description">
-                    Klasik korku sinemasının önemli
-                    yapımlarından biri.
-                </div>
-
-                <div class="rating">
-                    ★★★★★
-                </div>
-
-                <a
-                    class="watch"
-                    href="#"
-                    onclick="alert('İzleme bağlantısı yakında eklenecek.')"
-                >
-                    ▶ İzle
-                </a>
-
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="movie">
-
-            <div class="poster">🎥</div>
-
-            <div class="info">
-
-                <h3>His Girl Friday</h3>
-
-                <div class="year">1940 • Komedi</div>
-
-                <div class="description">
-                    Klasik Hollywood döneminden
-                    eğlenceli bir komedi.
-                </div>
-
-                <div class="rating">
-                    ★★★★☆
-                </div>
-
-                <a
-                    class="watch"
-                    href="#"
-                    onclick="alert('İzleme bağlantısı yakında eklenecek.')"
-                >
-                    ▶ İzle
-                </a>
-
-            </div>
-
-        </div>
+<div class="section-title">
+<h2 id="filmler">🎬 Popüler Filmler</h2>
+</div>
 
 
-        <div class="movie">
-
-            <div class="poster">🍿</div>
-
-            <div class="info">
-
-                <h3>Klasik Sinema</h3>
-
-                <div class="year">1930 • Klasik</div>
-
-                <div class="description">
-                    Paylaşım hakkı uygun olan
-                    klasik yapımlar.
-                </div>
-
-                <div class="rating">
-                    ★★★★☆
-                </div>
-
-                <a
-                    class="watch"
-                    href="#"
-                    onclick="alert('İzleme bağlantısı yakında eklenecek.')"
-                >
-                    ▶ İzle
-                </a>
-
-            </div>
-
-        </div>
+<div class="movies" id="movieList">
 
 
-        <div class="movie">
+<div class="movie" data-category="Korku">
 
-            <div class="poster">🎞️</div>
+<div class="poster">🎬</div>
 
-            <div class="info">
+<div class="info">
 
-                <h3>Public Domain Collection</h3>
+<h3>Night of the Living Dead</h3>
 
-                <div class="year">Klasikler</div>
+<div class="meta">
+1968 • Korku
+</div>
 
-                <div class="description">
-                    Kamu malı statüsündeki filmlerden
-                    oluşan koleksiyon.
-                </div>
+<div class="description">
+Klasik korku sinemasının unutulmaz yapımlarından.
+</div>
 
-                <div class="rating">
-                    ★★★★★
-                </div>
+<div class="rating">
+★★★★★
+</div>
 
-                <a
-                    class="watch"
-                    href="#"
-                    onclick="alert('İzleme bağlantısı yakında eklenecek.')"
-                >
-                    ▶ İzle
-                </a>
+<a href="#" class="watch">
+▶ İzle
+</a>
 
-            </div>
-
-        </div>
-
-    </div>
+</div>
+</div>
 
 
-    <div class="about" id="hakkinda">
+<div class="movie" data-category="Komedi">
 
-        <h2>BFilmcenneti Hakkında</h2>
+<div class="poster">🎥</div>
 
-        <br>
+<div class="info">
 
-        BFilmcenneti, kamu malı olan veya açıkça
-        paylaşım izni bulunan film ve içerikleri
-        keşfetmek için oluşturulmuş bir platformdur.
+<h3>His Girl Friday</h3>
 
-        <br><br>
+<div class="meta">
+1940 • Komedi
+</div>
 
-        İçerikler yayınlanmadan önce kullanım ve
-        telif durumları kontrol edilmelidir.
+<div class="description">
+Klasik Hollywood döneminden eğlenceli bir komedi.
+</div>
 
-    </div>
+<div class="rating">
+★★★★★
+</div>
 
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+<div class="movie" data-category="Klasik">
+
+<div class="poster">🍿</div>
+
+<div class="info">
+
+<h3>Klasik Sinema</h3>
+
+<div class="meta">
+1930 • Klasik
+</div>
+
+<div class="description">
+Sinemanın geçmişinden seçilmiş unutulmaz yapımlar.
+</div>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+<div class="movie" data-category="Klasik">
+
+<div class="poster">🎞️</div>
+
+<div class="info">
+
+<h3>Public Domain Collection</h3>
+
+<div class="meta">
+Klasikler
+</div>
+
+<div class="description">
+Kamu malı statüsündeki eserlerden seçilmiş koleksiyon.
+</div>
+
+<div class="rating">
+★★★★★
+</div>
+
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+<div class="movie" data-category="Aksiyon">
+
+<div class="poster">💥</div>
+
+<div class="info">
+
+<h3>Aksiyon Gecesi</h3>
+
+<div class="meta">
+2024 • Aksiyon
+</div>
+
+<div class="description">
+Hız, macera ve heyecan dolu bir film deneyimi.
+</div>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+<div class="movie" data-category="Korku">
+
+<div class="poster">👻</div>
+
+<div class="info">
+
+<h3>Karanlık Gece</h3>
+
+<div class="meta">
+2024 • Korku
+</div>
+
+<div class="description">
+Gecenin karanlığında başlayan gizemli olaylar.
+</div>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+<div class="movie" data-category="Komedi">
+
+<div class="poster">😂</div>
+
+<div class="info">
+
+<h3>Çılgın Gün</h3>
+
+<div class="meta">
+2023 • Komedi
+</div>
+
+<div class="description">
+Bol kahkahalı eğlenceli bir macera.
+</div>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+<div class="movie" data-category="Aksiyon">
+
+<div class="poster">🔥</div>
+
+<div class="info">
+
+<h3>Son Görev</h3>
+
+<div class="meta">
+2024 • Aksiyon
+</div>
+
+<div class="description">
+Tehlikeli bir göreve çıkan kahramanın hikayesi.
+</div>
+
+<div class="rating">
+★★★★★
+</div>
+
+<a href="#" class="watch">
+▶ İzle
+</a>
+
+</div>
+</div>
+
+
+</div>
 </main>
 
 
 <footer>
-    © 2026 BFilmcenneti
+
+<p>
+© 2026 <strong>BFilmCenneti</strong> • Film Dünyası
+</p>
+
+<p style="margin-top:10px;">
+Sinema severler için hazırlanmıştır.
+</p>
+
 </footer>
 
 
 <script>
 
-function searchMovies(){
+/* ARAMA */
 
-    const input =
-        document.getElementById("search")
-        .value
-        .toLowerCase();
+const search = document.getElementById("search");
 
-    const movies =
-        document.querySelectorAll(".movie");
+search.addEventListener("input", function(){
 
-    movies.forEach(movie => {
+    const value = this.value.toLowerCase();
+
+    document.querySelectorAll(".movie").forEach(movie => {
 
         const title =
-            movie.querySelector("h3")
-            .innerText
-            .toLowerCase();
+        movie.querySelector("h3").textContent.toLowerCase();
 
-        movie.style.display =
-            title.includes(input) ? "" : "none";
+        if(title.includes(value)){
+            movie.style.display = "";
+        }else{
+            movie.style.display = "none";
+        }
+
+    });
+
+});
+
+
+/* KATEGORİ */
+
+function filterMovies(category){
+
+    document.querySelectorAll(".category").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    event.target.classList.add("active");
+
+    document.querySelectorAll(".movie").forEach(movie=>{
+
+        if(category === "all"){
+            movie.style.display = "";
+        }
+        else if(movie.dataset.category === category){
+            movie.style.display = "";
+        }
+        else{
+            movie.style.display = "none";
+        }
 
     });
 
