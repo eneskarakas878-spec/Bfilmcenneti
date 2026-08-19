@@ -3,131 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Film Cenneti</title>
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #0b0b12;
-  color: white;
+    font-family: Arial, sans-serif;
+    background: #0b0b12;
+    color: white;
 }
 
+/* ÜST MENÜ */
 header {
-  background: #151522;
-  padding: 20px 6%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+    background: #15151f;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #292936;
 }
 
 .logo {
-  font-size: 28px;
-  font-weight: bold;
-  color: #ff304f;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffcc00;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
+    color: #ddd;
+    text-decoration: none;
+    font-size: 15px;
 }
 
-.hero {
-  padding: 80px 6%;
-  background: linear-gradient(135deg, #21152c, #0b0b12);
+nav a:hover {
+    color: #ffcc00;
 }
 
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 15px;
+/* ARAMA */
+.search-box {
+    padding: 60px 6% 35px;
+    text-align: center;
+    background: linear-gradient(180deg, #171722, #0b0b12);
 }
 
-.hero p {
-  color: #bbb;
-  max-width: 600px;
-  font-size: 18px;
+.search-box h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.search-box p {
+    color: #aaa;
+    margin-bottom: 25px;
 }
 
 .search {
-  padding: 30px 6%;
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid #333;
+    background: #191923;
+    color: white;
+    outline: none;
+    font-size: 16px;
 }
 
-.search input {
-  width: 100%;
-  max-width: 600px;
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  background: #1c1c29;
-  color: white;
-  font-size: 16px;
+.search:focus {
+    border-color: #ffcc00;
 }
 
-.section {
-  padding: 20px 6% 50px;
+/* FİLMLER */
+.container {
+    width: 88%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px 0 60px;
 }
 
-.section h2 {
-  margin-bottom: 25px;
-  font-size: 28px;
+.section-title {
+    font-size: 25px;
+    margin-bottom: 25px;
 }
 
 .movies {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 25px;
 }
 
 .movie {
-  background: #171722;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s;
-  cursor: pointer;
+    background: #15151f;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.25s;
+    border: 1px solid #252532;
 }
 
 .movie:hover {
-  transform: translateY(-7px);
+    transform: translateY(-7px);
+    border-color: #ffcc00;
 }
 
 .poster {
-  height: 260px;
-  background: linear-gradient(135deg, #ff304f, #651fff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px;
+    height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #29293b, #111119);
+    font-size: 55px;
 }
 
 .info {
-  padding: 15px;
+    padding: 17px;
 }
 
 .info h3 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
+    font-size: 18px;
 }
 
-.info p {
-  color: #999;
+.year {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.5;
+    height: 58px;
+    overflow: hidden;
+}
+
+.rating {
+    color: #ffcc00;
+    margin: 12px 0;
+}
+
+.watch {
+    display: block;
+    text-align: center;
+    background: #ffcc00;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 11px;
+    border-radius: 7px;
+}
+
+.watch:hover {
+    background: #fff;
+}
+
+/* ALT BİLGİ */
+.notice {
+    margin-top: 45px;
+    padding: 20px;
+    background: #15151f;
+    border: 1px solid #292936;
+    border-radius: 10px;
+    color: #aaa;
+    line-height: 1.6;
 }
 
 footer {
-  text-align: center;
-  padding: 30px;
-  background: #151522;
-  color: #888;
+    background: #15151f;
+    padding: 30px;
+    text-align: center;
+    color: #777;
+    margin-top: 30px;
+}
+
+/* MOBİL */
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    .search-box h1 {
+        font-size: 30px;
+    }
+
+    .movies {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .poster {
+        height: 230px;
+    }
+
+    .info {
+        padding: 12px;
+    }
+
+    .info h3 {
+        font-size: 15px;
+    }
 }
 </style>
 </head>
@@ -135,114 +229,223 @@ footer {
 <body>
 
 <header>
-  <div class="logo">🎬 Film Cenneti</div>
 
-  <nav>
-    <a href="#">Ana Sayfa</a>
-    <a href="#filmler">Filmler</a>
-    <a href="#yeni">Yeni Eklenenler</a>
-  </nav>
+    <div class="logo">🎬 Film Cenneti</div>
+
+    <nav>
+        <a href="#">Ana Sayfa</a>
+        <a href="#filmler">Filmler</a>
+        <a href="#hakkinda">Hakkında</a>
+    </nav>
+
 </header>
 
-<section class="hero">
-  <h1>Film Cenneti'ne Hoş Geldin</h1>
-  <p>
-    En sevdiğin filmleri keşfet, yeni yapımları bul ve film dünyasına göz at.
-  </p>
+
+<section class="search-box">
+
+    <h1>Film Cenneti</h1>
+
+    <p>Yasal olarak paylaşılabilen filmleri keşfet.</p>
+
+    <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="🔎 Film ara..."
+        onkeyup="searchMovies()"
+    >
+
 </section>
 
-<div class="search">
-  <input
-    type="text"
-    id="search"
-    placeholder="🔍 Film ara..."
-    onkeyup="searchMovies()"
-  >
-</div>
 
-<section class="section" id="filmler">
-  <h2>🔥 Popüler Filmler</h2>
+<main class="container">
 
-  <div class="movies" id="movieList">
+    <h2 class="section-title" id="filmler">
+        🎞️ Filmler
+    </h2>
 
-    <div class="movie">
-      <div class="poster">Film Afişi</div>
-      <div class="info">
-        <h3>Inception</h3>
-        <p>2010 • Bilim Kurgu</p>
-      </div>
+    <div class="movies" id="movieList">
+
+
+        <!-- FİLM 1 -->
+
+        <div class="movie">
+
+            <div class="poster">🎬</div>
+
+            <div class="info">
+
+                <h3>Night of the Living Dead</h3>
+
+                <div class="year">1968</div>
+
+                <div class="description">
+                    Klasik korku filmi. Bir grup insan,
+                    gizemli bir olay sonrası hayatta kalmaya çalışır.
+                </div>
+
+                <div class="rating">★★★★★</div>
+
+                <a class="watch"
+                   href="#"
+                   onclick="alert('Film bağlantısı yakında eklenecek.')">
+                   ▶ İzle
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FİLM 2 -->
+
+        <div class="movie">
+
+            <div class="poster">🎥</div>
+
+            <div class="info">
+
+                <h3>His Girl Friday</h3>
+
+                <div class="year">1940</div>
+
+                <div class="description">
+                    Eski bir gazete editörü ve eski sevgilisinin
+                    etrafında gelişen klasik komedi.
+                </div>
+
+                <div class="rating">★★★★☆</div>
+
+                <a class="watch"
+                   href="#"
+                   onclick="alert('Film bağlantısı yakında eklenecek.')">
+                   ▶ İzle
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FİLM 3 -->
+
+        <div class="movie">
+
+            <div class="poster">🍿</div>
+
+            <div class="info">
+
+                <h3>Public Domain Film</h3>
+
+                <div class="year">Klasik</div>
+
+                <div class="description">
+                    Paylaşım hakkı uygun olan klasik filmler
+                    Film Cenneti'nde listelenir.
+                </div>
+
+                <div class="rating">★★★★☆</div>
+
+                <a class="watch"
+                   href="#"
+                   onclick="alert('Film bağlantısı yakında eklenecek.')">
+                   ▶ İzle
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FİLM 4 -->
+
+        <div class="movie">
+
+            <div class="poster">🎞️</div>
+
+            <div class="info">
+
+                <h3>Klasik Sinema</h3>
+
+                <div class="year">1930'lar</div>
+
+                <div class="description">
+                    Telif durumu kontrol edilmiş klasik
+                    yapımlardan oluşan koleksiyon.
+                </div>
+
+                <div class="rating">★★★★★</div>
+
+                <a class="watch"
+                   href="#"
+                   onclick="alert('Film bağlantısı yakında eklenecek.')">
+                   ▶ İzle
+                </a>
+
+            </div>
+
+        </div>
+
+
     </div>
 
-    <div class="movie">
-      <div class="poster">Film Afişi</div>
-      <div class="info">
-        <h3>Interstellar</h3>
-        <p>2014 • Bilim Kurgu</p>
-      </div>
+
+    <div class="notice" id="hakkinda">
+
+        <strong>📢 Film Cenneti hakkında</strong>
+
+        <br><br>
+
+        Bu sitede yalnızca kamu malı olan veya
+        paylaşım izni bulunan içeriklerin yayınlanması
+        amaçlanmaktadır.
+
+        <br><br>
+
+        İçerik eklenmeden önce telif ve kullanım hakları
+        kontrol edilmelidir.
+
     </div>
 
-    <div class="movie">
-      <div class="poster">Film Afişi</div>
-      <div class="info">
-        <h3>Gladyatör</h3>
-        <p>2000 • Aksiyon</p>
-      </div>
-    </div>
+</main>
 
-    <div class="movie">
-      <div class="poster">Film Afişi</div>
-      <div class="info">
-        <h3>Batman</h3>
-        <p>2022 • Aksiyon</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="section" id="yeni">
-  <h2>🆕 Yeni Eklenenler</h2>
-
-  <div class="movies">
-
-    <div class="movie">
-      <div class="poster">Yeni Film</div>
-      <div class="info">
-        <h3>Yeni Film</h3>
-        <p>2026 • Dram</p>
-      </div>
-    </div>
-
-    <div class="movie">
-      <div class="poster">Karanlık Gece</div>
-      <div class="info">
-        <h3>Karanlık Gece</h3>
-        <p>2026 • Korku</p>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <footer>
-  © 2026 Film Cenneti
+
+    © 2026 Film Cenneti • Yasal içerik platformu
+
 </footer>
 
+
 <script>
+
 function searchMovies() {
-  const input = document.getElementById("search").value.toLowerCase();
-  const movies = document.querySelectorAll(".movie");
 
-  movies.forEach(movie => {
-    const title = movie.innerText.toLowerCase();
+    let input =
+        document.getElementById("search").value.toLowerCase();
 
-    if (title.includes(input)) {
-      movie.style.display = "";
-    } else {
-      movie.style.display = "none";
-    }
-  });
+    let movies =
+        document.querySelectorAll(".movie");
+
+    movies.forEach(function(movie) {
+
+        let title =
+            movie.querySelector("h3").innerText.toLowerCase();
+
+        if (title.includes(input)) {
+
+            movie.style.display = "";
+
+        } else {
+
+            movie.style.display = "none";
+
+        }
+
+    });
+
 }
+
 </script>
 
 </body>
