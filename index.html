@@ -1,247 +1,249 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film Cenneti</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film Cenneti</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b0b12;
-            color: white;
-        }
+body {
+  font-family: Arial, sans-serif;
+  background: #0b0b12;
+  color: white;
+}
 
-        header {
-            background: #11111c;
-            padding: 20px 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+header {
+  background: #151522;
+  padding: 20px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #e50914;
-        }
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff304f;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+}
 
-        .hero {
-            padding: 80px 6%;
-            background: linear-gradient(90deg, #151522, #0b0b12);
-        }
+.hero {
+  padding: 80px 6%;
+  background: linear-gradient(135deg, #21152c, #0b0b12);
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
 
-        .hero p {
-            color: #bdbdc8;
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
+.hero p {
+  color: #bbb;
+  max-width: 600px;
+  font-size: 18px;
+}
 
-        .search {
-            display: flex;
-            max-width: 600px;
-        }
+.search {
+  padding: 30px 6%;
+}
 
-        .search input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            outline: none;
-            background: #242432;
-            color: white;
-            border-radius: 8px 0 0 8px;
-            font-size: 16px;
-        }
+.search input {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #1c1c29;
+  color: white;
+  font-size: 16px;
+}
 
-        .search button {
-            padding: 15px 25px;
-            border: none;
-            background: #e50914;
-            color: white;
-            cursor: pointer;
-            border-radius: 0 8px 8px 0;
-        }
+.section {
+  padding: 20px 6% 50px;
+}
 
-        .section {
-            padding: 40px 6%;
-        }
+.section h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+}
 
-        .section h2 {
-            margin-bottom: 25px;
-            font-size: 28px;
-        }
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
 
-        .movies {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 22px;
-        }
+.movie {
+  background: #171722;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
 
-        .movie {
-            background: #171722;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
+.movie:hover {
+  transform: translateY(-7px);
+}
 
-        .movie:hover {
-            transform: translateY(-7px);
-        }
+.poster {
+  height: 260px;
+  background: linear-gradient(135deg, #ff304f, #651fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+}
 
-        .poster {
-            height: 260px;
-            background: linear-gradient(135deg, #292943, #15151f);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            font-size: 18px;
-        }
+.info {
+  padding: 15px;
+}
 
-        .movie-info {
-            padding: 15px;
-        }
+.info h3 {
+  margin-bottom: 8px;
+}
 
-        .movie-info h3 {
-            margin-bottom: 8px;
-        }
+.info p {
+  color: #999;
+}
 
-        .movie-info p {
-            color: #999;
-            font-size: 14px;
-        }
-
-        footer {
-            margin-top: 40px;
-            padding: 30px;
-            text-align: center;
-            background: #11111c;
-            color: #888;
-        }
-
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-    </style>
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #151522;
+  color: #888;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">🎬 Film Cenneti</div>
+  <div class="logo">🎬 Film Cenneti</div>
 
-    <nav>
-        <a href="#">Ana Sayfa</a>
-        <a href="#">Filmler</a>
-        <a href="#">Diziler</a>
-        <a href="#">Türler</a>
-    </nav>
+  <nav>
+    <a href="#">Ana Sayfa</a>
+    <a href="#filmler">Filmler</a>
+    <a href="#yeni">Yeni Eklenenler</a>
+  </nav>
 </header>
 
 <section class="hero">
-    <h1>Film Cenneti'ne Hoş Geldin</h1>
-    <p>Filmleri ve dizileri keşfet, favorilerini bul.</p>
-
-    <div class="search">
-        <input type="text" placeholder="Film veya dizi ara...">
-        <button>Ara</button>
-    </div>
+  <h1>Film Cenneti'ne Hoş Geldin</h1>
+  <p>
+    En sevdiğin filmleri keşfet, yeni yapımları bul ve film dünyasına göz at.
+  </p>
 </section>
 
-<section class="section">
-    <h2>🔥 Popüler Filmler</h2>
+<div class="search">
+  <input
+    type="text"
+    id="search"
+    placeholder="🔍 Film ara..."
+    onkeyup="searchMovies()"
+  >
+</div>
 
-    <div class="movies">
+<section class="section" id="filmler">
+  <h2>🔥 Popüler Filmler</h2>
 
-        <div class="movie">
-            <div class="poster">Film Afişi</div>
-            <div class="movie-info">
-                <h3>Örnek Film</h3>
-                <p>2026 • Aksiyon</p>
-            </div>
-        </div>
+  <div class="movies" id="movieList">
 
-        <div class="movie">
-            <div class="poster">Film Afişi</div>
-            <div class="movie-info">
-                <h3>Gece Yolculuğu</h3>
-                <p>2025 • Gerilim</p>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="poster">Film Afişi</div>
-            <div class="movie-info">
-                <h3>Kayıp Şehir</h3>
-                <p>2025 • Macera</p>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="poster">Film Afişi</div>
-            <div class="movie-info">
-                <h3>Son Savaş</h3>
-                <p>2026 • Aksiyon</p>
-            </div>
-        </div>
-
+    <div class="movie">
+      <div class="poster">Film Afişi</div>
+      <div class="info">
+        <h3>Inception</h3>
+        <p>2010 • Bilim Kurgu</p>
+      </div>
     </div>
+
+    <div class="movie">
+      <div class="poster">Film Afişi</div>
+      <div class="info">
+        <h3>Interstellar</h3>
+        <p>2014 • Bilim Kurgu</p>
+      </div>
+    </div>
+
+    <div class="movie">
+      <div class="poster">Film Afişi</div>
+      <div class="info">
+        <h3>Gladyatör</h3>
+        <p>2000 • Aksiyon</p>
+      </div>
+    </div>
+
+    <div class="movie">
+      <div class="poster">Film Afişi</div>
+      <div class="info">
+        <h3>Batman</h3>
+        <p>2022 • Aksiyon</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section class="section">
-    <h2>🎞️ Yeni Eklenenler</h2>
+<section class="section" id="yeni">
+  <h2>🆕 Yeni Eklenenler</h2>
 
-    <div class="movies">
+  <div class="movies">
 
-        <div class="movie">
-            <div class="poster">Film Afişi</div>
-            <div class="movie-info">
-                <h3>Yeni Film</h3>
-                <p>2026 • Dram</p>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="poster">Film Afişi</div>
-            <div class="movie-info">
-                <h3>Karanlık Gece</h3>
-                <p>2026 • Korku</p>
-            </div>
-        </div>
-
+    <div class="movie">
+      <div class="poster">Yeni Film</div>
+      <div class="info">
+        <h3>Yeni Film</h3>
+        <p>2026 • Dram</p>
+      </div>
     </div>
+
+    <div class="movie">
+      <div class="poster">Karanlık Gece</div>
+      <div class="info">
+        <h3>Karanlık Gece</h3>
+        <p>2026 • Korku</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <footer>
-    © 2026 Film Cenneti
+  © 2026 Film Cenneti
 </footer>
+
+<script>
+function searchMovies() {
+  const input = document.getElementById("search").value.toLowerCase();
+  const movies = document.querySelectorAll(".movie");
+
+  movies.forEach(movie => {
+    const title = movie.innerText.toLowerCase();
+
+    if (title.includes(input)) {
+      movie.style.display = "";
+    } else {
+      movie.style.display = "none";
+    }
+  });
+}
+</script>
 
 </body>
 </html>
