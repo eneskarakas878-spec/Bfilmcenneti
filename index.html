@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -29,12 +30,12 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    height:75px;
+    min-height:75px;
     padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:rgba(12,12,22,.94);
+    background:rgba(12,12,22,.96);
     border-bottom:1px solid #292936;
     backdrop-filter:blur(15px);
 }
@@ -374,6 +375,10 @@ main{
     cursor:pointer;
 }
 
+.watch:hover{
+    opacity:.9;
+}
+
 .favorite{
     width:45px;
     border:1px solid #3a3a48;
@@ -381,11 +386,53 @@ main{
     color:white;
     border-radius:8px;
     cursor:pointer;
+    font-size:20px;
 }
 
 .favorite.active{
     color:#ff4d6d;
     border-color:#ff4d6d;
+}
+
+/* ================= USER RATING ================= */
+
+.user-rating{
+    margin-top:25px;
+    padding:18px;
+    background:#101019;
+    border:1px solid #292936;
+    border-radius:12px;
+}
+
+.user-rating-title{
+    color:#aaa;
+    margin-bottom:12px;
+}
+
+.stars{
+    display:flex;
+    gap:5px;
+}
+
+.star{
+    border:0;
+    background:none;
+    color:#555;
+    font-size:28px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.star:hover,
+.star.selected{
+    color:#ffd21c;
+    transform:scale(1.1);
+}
+
+.user-score{
+    margin-top:10px;
+    color:#aaa;
+    font-size:13px;
 }
 
 /* ================= EMPTY ================= */
@@ -417,6 +464,8 @@ main{
 
 .modal-box{
     width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
     background:#171720;
     border:1px solid #393946;
     border-radius:18px;
@@ -487,6 +536,25 @@ main{
     border-color:#ffd21c;
 }
 
+.profile-welcome{
+    margin-top:15px;
+    color:#aaa;
+}
+
+/* ================= FAVORITES PANEL ================= */
+
+.favorites-info{
+    margin-top:25px;
+    padding:18px;
+    border-radius:12px;
+    background:#101019;
+    border:1px solid #292936;
+}
+
+.favorites-info strong{
+    color:#ffd21c;
+}
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -522,6 +590,7 @@ footer p{
 }
 
 @media(max-width:750px){
+
     header{
         padding:0 4%;
     }
@@ -550,6 +619,7 @@ footer p{
 }
 
 @media(max-width:480px){
+
     .movie-grid{
         grid-template-columns:1fr;
     }
@@ -579,7 +649,7 @@ footer p{
 
 <header>
 
-<a href="#" class="logo">
+<a href="#anasayfa" class="logo">
     <span class="logo-icon">🎬</span>
     BFilm<span>Cenneti</span>
 </a>
@@ -588,10 +658,12 @@ footer p{
     <a href="#anasayfa">Ana Sayfa</a>
     <a href="#filmler">Filmler</a>
     <a href="#kategoriler">Kategoriler</a>
-    <a href="#" onclick="openProfile()">Profil</a>
+    <a href="#" onclick="openProfile();return false;">Profil</a>
 </nav>
 
-<button class="profile-btn" onclick="openProfile()">👤 Profil</button>
+<button class="profile-btn" onclick="openProfile()">
+    👤 Profil
+</button>
 
 </header>
 
@@ -602,26 +674,30 @@ footer p{
 
 <div class="hero-content">
 
-<small>🎬 BİLİM KURGU • AKSİYON • KORKU • KOMEDİ</small>
+<small>
+🎬 BİLİM KURGU • AKSİYON • KORKU • KOMEDİ
+</small>
 
 <h1>
 Film Dünyasına
 <span>Hoş Geldin</span>
 </h1>
 
-<p>
+<p id="heroText">
 En sevdiğin filmleri keşfet, favorilerine ekle,
 puanlarını incele ve kendine özel film koleksiyonunu oluştur.
 </p>
 
 <div class="hero-buttons">
 
-<button class="btn btn-primary"
+<button
+class="btn btn-primary"
 onclick="document.getElementById('filmler').scrollIntoView()">
 Filmleri Keşfet
 </button>
 
-<button class="btn btn-dark"
+<button
+class="btn btn-dark"
 onclick="openProfile()">
 👤 Profil Oluştur
 </button>
@@ -656,47 +732,59 @@ oninput="searchMovies()">
 
 <main>
 
-<!-- KATEGORİLER -->
+<!-- ================= KATEGORİLER ================= -->
 
 <section id="kategoriler">
 
 <div class="section-title">
 
 <div>
+
 <h2>Kategoriler</h2>
-<p>İstediğin türde filmleri keşfet.</p>
+
+<p>
+İstediğin türde filmleri keşfet.
+</p>
+
 </div>
 
 </div>
+
 
 <div class="categories">
 
-<button class="category active"
+<button
+class="category active"
 onclick="filterMovies('all',this)">
 Tümü
 </button>
 
-<button class="category"
+<button
+class="category"
 onclick="filterMovies('Korku',this)">
 Korku
 </button>
 
-<button class="category"
+<button
+class="category"
 onclick="filterMovies('Komedi',this)">
 Komedi
 </button>
 
-<button class="category"
+<button
+class="category"
 onclick="filterMovies('Aksiyon',this)">
 Aksiyon
 </button>
 
-<button class="category"
+<button
+class="category"
 onclick="filterMovies('Bilim Kurgu',this)">
 Bilim Kurgu
 </button>
 
-<button class="category"
+<button
+class="category"
 onclick="filterMovies('Klasik',this)">
 Klasik
 </button>
@@ -706,15 +794,20 @@ Klasik
 </section>
 
 
-<!-- FİLMLER -->
+<!-- ================= FİLMLER ================= -->
 
 <section id="filmler">
 
 <div class="section-title">
 
 <div>
+
 <h2>🔥 Popüler Filmler</h2>
-<p>Bugün en çok ilgi gören yapımlar.</p>
+
+<p>
+Bugün en çok ilgi gören yapımlar.
+</p>
+
 </div>
 
 </div>
@@ -725,10 +818,12 @@ Klasik
 
 <!-- 1 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Korku"
 data-title="Gece Yarısı"
-data-year="2024">
+data-year="2024"
+data-id="gece-yarisi">
 
 <div class="poster one"></div>
 
@@ -748,13 +843,20 @@ Gece Yarısı
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Gece Yarısı','2024 • Korku','Karanlık bir gecede başlayan gizemli olaylar, genç bir grubun hayatını tamamen değiştirir.')">
+<button
+class="watch"
+onclick="showMovie(
+'Gece Yarısı',
+'2024 • Korku • IMDb benzeri puan: 8.7',
+'Karanlık bir gecede başlayan gizemli olaylar, genç bir grubun hayatını tamamen değiştirir.',
+'gece-yarisi'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'gece-yarisi')">
 ♡
 </button>
 
@@ -766,10 +868,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 2 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Aksiyon"
 data-title="Son Savaş"
-data-year="2025">
+data-year="2025"
+data-id="son-savas">
 
 <div class="poster two"></div>
 
@@ -789,13 +893,20 @@ Son Savaş
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Son Savaş','2025 • Aksiyon','Tehlikeli bir görev için bir araya gelen ekip, beklenmedik bir düşmanla karşılaşır.')">
+<button
+class="watch"
+onclick="showMovie(
+'Son Savaş',
+'2025 • Aksiyon • IMDb benzeri puan: 8.5',
+'Tehlikeli bir görev için bir araya gelen ekip, beklenmedik bir düşmanla karşılaşır.',
+'son-savas'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'son-savas')">
 ♡
 </button>
 
@@ -807,10 +918,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 3 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Komedi"
 data-title="Talihsiz Gün"
-data-year="2023">
+data-year="2023"
+data-id="talihsiz-gun">
 
 <div class="poster three"></div>
 
@@ -830,13 +943,20 @@ Talihsiz Gün
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Talihsiz Gün','2023 • Komedi','Her şeyin ters gittiği bir günde sıradan bir adamın başına gelen komik olaylar.')">
+<button
+class="watch"
+onclick="showMovie(
+'Talihsiz Gün',
+'2023 • Komedi • IMDb benzeri puan: 8.1',
+'Her şeyin ters gittiği bir günde sıradan bir adamın başına gelen komik olaylar.',
+'talihsiz-gun'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'talihsiz-gun')">
 ♡
 </button>
 
@@ -848,10 +968,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 4 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Bilim Kurgu"
 data-title="Son Dünya"
-data-year="2025">
+data-year="2025"
+data-id="son-dunya">
 
 <div class="poster four"></div>
 
@@ -871,13 +993,20 @@ Son Dünya
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Son Dünya','2025 • Bilim Kurgu','İnsanlığın geleceğini değiştirecek gizemli bir keşfin ardından başlayan büyük macera.')">
+<button
+class="watch"
+onclick="showMovie(
+'Son Dünya',
+'2025 • Bilim Kurgu • IMDb benzeri puan: 9.0',
+'İnsanlığın geleceğini değiştirecek gizemli bir keşfin ardından başlayan büyük macera.',
+'son-dunya'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'son-dunya')">
 ♡
 </button>
 
@@ -889,10 +1018,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 5 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Korku"
 data-title="Karanlık Ev"
-data-year="2022">
+data-year="2022"
+data-id="karanlik-ev">
 
 <div class="poster five"></div>
 
@@ -912,13 +1043,20 @@ Karanlık Ev
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Karanlık Ev','2022 • Korku','Yıllardır boş duran bir evin sırrını araştıran üç arkadaş, beklemedikleri bir gerçekle yüzleşir.')">
+<button
+class="watch"
+onclick="showMovie(
+'Karanlık Ev',
+'2022 • Korku • IMDb benzeri puan: 7.9',
+'Yıllardır boş duran bir evin sırrını araştıran üç arkadaş, beklemedikleri bir gerçekle yüzleşir.',
+'karanlik-ev'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'karanlik-ev')">
 ♡
 </button>
 
@@ -930,10 +1068,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 6 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Aksiyon"
 data-title="Hızlı Görev"
-data-year="2024">
+data-year="2024"
+data-id="hizli-gorev">
 
 <div class="poster six"></div>
 
@@ -953,13 +1093,20 @@ Hızlı Görev
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Hızlı Görev','2024 • Aksiyon','Zamana karşı yarışan özel ekip, dünyayı tehdit eden planı durdurmaya çalışır.')">
+<button
+class="watch"
+onclick="showMovie(
+'Hızlı Görev',
+'2024 • Aksiyon • IMDb benzeri puan: 8.4',
+'Zamana karşı yarışan özel ekip, dünyayı tehdit eden planı durdurmaya çalışır.',
+'hizli-gorev'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'hizli-gorev')">
 ♡
 </button>
 
@@ -971,10 +1118,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 7 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Klasik"
 data-title="Eski Hikaye"
-data-year="1998">
+data-year="1998"
+data-id="eski-hikaye">
 
 <div class="poster seven"></div>
 
@@ -994,13 +1143,20 @@ Eski Hikaye
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Eski Hikaye','1998 • Klasik','Yıllar geçse de unutulmayan, sinema tarihine damgasını vurmuş özel bir hikâye.')">
+<button
+class="watch"
+onclick="showMovie(
+'Eski Hikaye',
+'1998 • Klasik • IMDb benzeri puan: 9.1',
+'Yıllar geçse de unutulmayan, sinema tarihine damgasını vurmuş özel bir hikâye.',
+'eski-hikaye'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'eski-hikaye')">
 ♡
 </button>
 
@@ -1012,10 +1168,12 @@ onclick="favoriteMovie(this)">
 
 <!-- 8 -->
 
-<div class="movie"
+<div
+class="movie"
 data-category="Komedi"
 data-title="Büyük Macera"
-data-year="2021">
+data-year="2021"
+data-id="buyuk-macera">
 
 <div class="poster eight"></div>
 
@@ -1035,13 +1193,20 @@ Büyük Macera
 
 <div class="movie-actions">
 
-<button class="watch"
-onclick="showMovie('Büyük Macera','2021 • Komedi','Bir grup arkadaşın çıktığı yolculuk, beklenmedik ve eğlenceli olaylarla dolu bir maceraya dönüşür.')">
+<button
+class="watch"
+onclick="showMovie(
+'Büyük Macera',
+'2021 • Komedi • IMDb benzeri puan: 8.0',
+'Bir grup arkadaşın çıktığı yolculuk, beklenmedik ve eğlenceli olaylarla dolu bir maceraya dönüşür.',
+'buyuk-macera'
+)">
 İncele
 </button>
 
-<button class="favorite"
-onclick="favoriteMovie(this)">
+<button
+class="favorite"
+onclick="favoriteMovie(this,'buyuk-macera')">
 ♡
 </button>
 
@@ -1053,9 +1218,15 @@ onclick="favoriteMovie(this)">
 
 </div>
 
+
 <div class="empty" id="empty">
+
 <h2>😕 Film bulunamadı</h2>
-<p>Başka bir film adı, tür veya yıl deneyebilirsin.</p>
+
+<p>
+Başka bir film adı, tür veya yıl deneyebilirsin.
+</p>
+
 </div>
 
 </section>
@@ -1063,23 +1234,58 @@ onclick="favoriteMovie(this)">
 </main>
 
 
-<!-- ================= FILM MODAL ================= -->
+<!-- ================= FİLM MODAL ================= -->
 
 <div class="modal" id="movieModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal()">×</button>
+<button class="close" onclick="closeModal()">
+×
+</button>
 
 <h2 id="modalTitle"></h2>
 
-<div class="modal-info" id="modalInfo"></div>
+<div
+class="modal-info"
+id="modalInfo">
+</div>
 
-<p class="modal-description" id="modalDescription"></p>
+<p
+class="modal-description"
+id="modalDescription">
+</p>
+
+
+<div class="user-rating">
+
+<div class="user-rating-title">
+⭐ Bu filme puan ver
+</div>
+
+<div class="stars">
+
+<button class="star" onclick="rateMovie(1)">★</button>
+<button class="star" onclick="rateMovie(2)">★</button>
+<button class="star" onclick="rateMovie(3)">★</button>
+<button class="star" onclick="rateMovie(4)">★</button>
+<button class="star" onclick="rateMovie(5)">★</button>
+
+</div>
+
+<div
+class="user-score"
+id="userScore">
+Henüz puan vermedin.
+</div>
+
+</div>
 
 <br>
 
-<button class="btn btn-primary" onclick="closeModal()">
+<button
+class="btn btn-primary"
+onclick="closeModal()">
 Tamam
 </button>
 
@@ -1090,11 +1296,17 @@ Tamam
 
 <!-- ================= PROFILE MODAL ================= -->
 
-<div class="modal" id="profileModal">
+<div
+class="modal"
+id="profileModal">
 
 <div class="modal-box profile-box">
 
-<button class="close" onclick="closeProfile()">×</button>
+<button
+class="close"
+onclick="closeProfile()">
+×
+</button>
 
 <h2>👤 Profil</h2>
 
@@ -1105,13 +1317,24 @@ BFilmCenneti'ndeki adını belirle.
 <input
 class="profile-input"
 id="usernameInput"
-placeholder="Adını yaz...">
+placeholder="Adını yaz..."
+maxlength="30">
 
 <button
 class="btn btn-primary"
 onclick="saveProfile()">
 Kaydet
 </button>
+
+<div class="favorites-info">
+❤️ Favori film sayın:
+<strong id="favoriteCount">0</strong>
+</div>
+
+<p
+class="profile-welcome"
+id="profileWelcome">
+</p>
 
 </div>
 
@@ -1135,8 +1358,15 @@ Film dünyasını keşfetmenin yeni adresi.
 </div>
 
 <div>
-<p>© 2026 BFilmCenneti</p>
-<p style="margin-top:7px">Tüm hakları saklıdır.</p>
+
+<p>
+© 2026 BFilmCenneti
+</p>
+
+<p style="margin-top:7px">
+Tüm hakları saklıdır.
+</p>
+
 </div>
 
 </footer>
@@ -1144,12 +1374,24 @@ Film dünyasını keşfetmenin yeni adresi.
 
 <script>
 
+/* ==================================================
+   BFilmCenneti
+   Arama + Kategori + Favori + Profil + Puanlama
+   ================================================== */
+
+
+/* ================= GLOBAL ================= */
+
+let currentMovieId = null;
+
+
 /* ================= ARAMA ================= */
 
 function searchMovies(){
 
     const search =
-        document.getElementById("searchInput")
+        document
+        .getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
@@ -1175,28 +1417,37 @@ function searchMovies(){
             category.includes(search) ||
             year.includes(search)
         ){
+
             movie.style.display = "";
             found++;
+
         }else{
+
             movie.style.display = "none";
+
         }
 
     });
 
     document.getElementById("empty").style.display =
         found === 0 ? "block" : "none";
+
 }
 
 
 /* ================= KATEGORİ ================= */
 
-function filterMovies(category, button){
+function filterMovies(category,button){
 
     document
         .querySelectorAll(".category")
-        .forEach(btn => btn.classList.remove("active"));
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
     button.classList.add("active");
+
+    document.getElementById("searchInput").value = "";
 
     const movies =
         document.querySelectorAll(".movie");
@@ -1229,24 +1480,42 @@ function filterMovies(category, button){
 
 /* ================= FİLM DETAY ================= */
 
-function showMovie(title, info, description){
+function showMovie(
+    title,
+    info,
+    description,
+    movieId
+){
 
-    document.getElementById("modalTitle")
+    currentMovieId = movieId;
+
+    document
+        .getElementById("modalTitle")
         .textContent = title;
 
-    document.getElementById("modalInfo")
+    document
+        .getElementById("modalInfo")
         .textContent = info;
 
-    document.getElementById("modalDescription")
+    document
+        .getElementById("modalDescription")
         .textContent = description;
 
-    document.getElementById("movieModal")
+    loadMovieRating(movieId);
+
+    document
+        .getElementById("movieModal")
         .classList.add("show");
+
 }
+
+
+/* ================= MODAL KAPAT ================= */
 
 function closeModal(){
 
-    document.getElementById("movieModal")
+    document
+        .getElementById("movieModal")
         .classList.remove("show");
 
 }
@@ -1254,23 +1523,181 @@ function closeModal(){
 
 /* ================= FAVORİ ================= */
 
-function favoriteMovie(button){
+function favoriteMovie(button,movieId){
 
-    button.classList.toggle("active");
+    let favorites =
+        JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+        );
 
-    if(button.classList.contains("active")){
+    const index =
+        favorites.indexOf(movieId);
 
+    if(index === -1){
+
+        favorites.push(movieId);
+
+        button.classList.add("active");
         button.textContent = "♥";
 
     }else{
 
+        favorites.splice(index,1);
+
+        button.classList.remove("active");
         button.textContent = "♡";
 
     }
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+
+    updateFavoriteCount();
+
 }
 
 
-/* ================= PROFİL ================= */
+/* ================= FAVORİLERİ YÜKLE ================= */
+
+function loadFavorites(){
+
+    const favorites =
+        JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+        );
+
+    document
+        .querySelectorAll(".favorite")
+        .forEach(button => {
+
+            const onclick =
+                button.getAttribute("onclick");
+
+            if(!onclick) return;
+
+            const match =
+                onclick.match(/'([^']+)'\)$/);
+
+            if(!match) return;
+
+            const movieId = match[1];
+
+            if(favorites.includes(movieId)){
+
+                button.classList.add("active");
+                button.textContent = "♥";
+
+            }else{
+
+                button.classList.remove("active");
+                button.textContent = "♡";
+
+            }
+
+        });
+
+    updateFavoriteCount();
+
+}
+
+
+/* ================= FAVORİ SAYISI ================= */
+
+function updateFavoriteCount(){
+
+    const favorites =
+        JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+        );
+
+    const count =
+        document.getElementById("favoriteCount");
+
+    if(count){
+        count.textContent = favorites.length;
+    }
+
+}
+
+
+/* ================= PUANLAMA ================= */
+
+function rateMovie(score){
+
+    if(!currentMovieId){
+        return;
+    }
+
+    localStorage.setItem(
+        "rating_" + currentMovieId,
+        score
+    );
+
+    showRating(score);
+
+}
+
+
+/* ================= PUAN GÖSTER ================= */
+
+function showRating(score){
+
+    const stars =
+        document.querySelectorAll(".star");
+
+    stars.forEach((star,index) => {
+
+        if(index < score){
+
+            star.classList.add("selected");
+
+        }else{
+
+            star.classList.remove("selected");
+
+        }
+
+    });
+
+    document.getElementById("userScore").textContent =
+        "Bu filme " + score + "/5 puan verdin.";
+
+}
+
+
+/* ================= PUAN YÜKLE ================= */
+
+function loadMovieRating(movieId){
+
+    const score =
+        localStorage.getItem(
+            "rating_" + movieId
+        );
+
+    const stars =
+        document.querySelectorAll(".star");
+
+    stars.forEach(star =>
+        star.classList.remove("selected")
+    );
+
+    if(score){
+
+        showRating(Number(score));
+
+    }else{
+
+        document.getElementById("userScore").textContent =
+            "Henüz puan vermedin.";
+
+    }
+
+}
+
+
+/* ================= PROFİL AÇ ================= */
 
 function openProfile(){
 
@@ -1279,26 +1706,44 @@ function openProfile(){
 
     if(saved){
 
-        document.getElementById("usernameInput")
+        document
+            .getElementById("usernameInput")
             .value = saved;
+
+        document
+            .getElementById("profileWelcome")
+            .textContent =
+            "Hoş geldin, " + saved + "!";
 
     }
 
-    document.getElementById("profileModal")
+    updateFavoriteCount();
+
+    document
+        .getElementById("profileModal")
         .classList.add("show");
+
 }
+
+
+/* ================= PROFİL KAPAT ================= */
 
 function closeProfile(){
 
-    document.getElementById("profileModal")
+    document
+        .getElementById("profileModal")
         .classList.remove("show");
 
 }
 
+
+/* ================= PROFİL KAYDET ================= */
+
 function saveProfile(){
 
     const username =
-        document.getElementById("usernameInput")
+        document
+        .getElementById("usernameInput")
         .value
         .trim();
 
@@ -1307,6 +1752,7 @@ function saveProfile(){
         alert("Lütfen bir isim yaz.");
 
         return;
+
     }
 
     localStorage.setItem(
@@ -1314,77 +1760,95 @@ function saveProfile(){
         username
     );
 
-    alert(
-        "Hoş geldin, " +
+    document
+        .getElementById("heroText")
+        .textContent =
+        "Hoş geldin " +
         username +
-        "!"
-    );
+        "! En sevdiğin filmleri keşfetmeye devam et.";
+
+    document
+        .getElementById("profileWelcome")
+        .textContent =
+        "Hoş geldin, " + username + "!";
 
     closeProfile();
+
 }
 
 
 /* ================= DIŞARI TIKLAMA ================= */
 
-window.addEventListener("click", function(event){
+window.addEventListener(
+    "click",
+    function(event){
 
-    const movieModal =
-        document.getElementById("movieModal");
+        const movieModal =
+            document.getElementById("movieModal");
 
-    const profileModal =
-        document.getElementById("profileModal");
+        const profileModal =
+            document.getElementById("profileModal");
 
-    if(event.target === movieModal){
+        if(event.target === movieModal){
 
-        closeModal();
+            closeModal();
+
+        }
+
+        if(event.target === profileModal){
+
+            closeProfile();
+
+        }
 
     }
-
-    if(event.target === profileModal){
-
-        closeProfile();
-
-    }
-
-});
+);
 
 
 /* ================= KLAVYE ================= */
 
-document.addEventListener("keydown", function(event){
+document.addEventListener(
+    "keydown",
+    function(event){
 
-    if(event.key === "Escape"){
+        if(event.key === "Escape"){
 
-        closeModal();
-        closeProfile();
+            closeModal();
+            closeProfile();
 
-    }
-
-});
-
-
-/* ================= HOŞ GELDİN MESAJI ================= */
-
-window.addEventListener("DOMContentLoaded", function(){
-
-    const username =
-        localStorage.getItem("username");
-
-    if(username){
-
-        const heroText =
-            document.querySelector(".hero p");
-
-        heroText.textContent =
-            "Hoş geldin " +
-            username +
-            "! En sevdiğin filmleri keşfetmeye devam et.";
+        }
 
     }
+);
 
-});
+
+/* ================= BAŞLANGIÇ ================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const username =
+            localStorage.getItem("username");
+
+        if(username){
+
+            document
+                .getElementById("heroText")
+                .textContent =
+                "Hoş geldin " +
+                username +
+                "! En sevdiğin filmleri keşfetmeye devam et.";
+
+        }
+
+        loadFavorites();
+
+    }
+);
 
 </script>
 
 </body>
 </html>
+```
