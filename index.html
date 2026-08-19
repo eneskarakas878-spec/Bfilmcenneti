@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Cenneti</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0b12;
+            color: white;
+        }
+
+        header {
+            background: #11111c;
+            padding: 20px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .hero {
+            padding: 80px 6%;
+            background: linear-gradient(90deg, #151522, #0b0b12);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #bdbdc8;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .search {
+            display: flex;
+            max-width: 600px;
+        }
+
+        .search input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+            background: #242432;
+            color: white;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+
+        .search button {
+            padding: 15px 25px;
+            border: none;
+            background: #e50914;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .section {
+            padding: 40px 6%;
+        }
+
+        .section h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 22px;
+        }
+
+        .movie {
+            background: #171722;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .movie:hover {
+            transform: translateY(-7px);
+        }
+
+        .poster {
+            height: 260px;
+            background: linear-gradient(135deg, #292943, #15151f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        .movie-info {
+            padding: 15px;
+        }
+
+        .movie-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .movie-info p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 30px;
+            text-align: center;
+            background: #11111c;
+            color: #888;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🎬 Film Cenneti</div>
+
+    <nav>
+        <a href="#">Ana Sayfa</a>
+        <a href="#">Filmler</a>
+        <a href="#">Diziler</a>
+        <a href="#">Türler</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Film Cenneti'ne Hoş Geldin</h1>
+    <p>Filmleri ve dizileri keşfet, favorilerini bul.</p>
+
+    <div class="search">
+        <input type="text" placeholder="Film veya dizi ara...">
+        <button>Ara</button>
+    </div>
+</section>
+
+<section class="section">
+    <h2>🔥 Popüler Filmler</h2>
+
+    <div class="movies">
+
+        <div class="movie">
+            <div class="poster">Film Afişi</div>
+            <div class="movie-info">
+                <h3>Örnek Film</h3>
+                <p>2026 • Aksiyon</p>
+            </div>
+        </div>
+
+        <div class="movie">
+            <div class="poster">Film Afişi</div>
+            <div class="movie-info">
+                <h3>Gece Yolculuğu</h3>
+                <p>2025 • Gerilim</p>
+            </div>
+        </div>
+
+        <div class="movie">
+            <div class="poster">Film Afişi</div>
+            <div class="movie-info">
+                <h3>Kayıp Şehir</h3>
+                <p>2025 • Macera</p>
+            </div>
+        </div>
+
+        <div class="movie">
+            <div class="poster">Film Afişi</div>
+            <div class="movie-info">
+                <h3>Son Savaş</h3>
+                <p>2026 • Aksiyon</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🎞️ Yeni Eklenenler</h2>
+
+    <div class="movies">
+
+        <div class="movie">
+            <div class="poster">Film Afişi</div>
+            <div class="movie-info">
+                <h3>Yeni Film</h3>
+                <p>2026 • Dram</p>
+            </div>
+        </div>
+
+        <div class="movie">
+            <div class="poster">Film Afişi</div>
+            <div class="movie-info">
+                <h3>Karanlık Gece</h3>
+                <p>2026 • Korku</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 Film Cenneti
+</footer>
+
+</body>
+</html>
